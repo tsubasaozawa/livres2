@@ -68,3 +68,8 @@ gem 'haml-rails'
 gem 'pry-rails'
 
 gem 'font-awesome-rails'
+
+gem 'payjp'
+gem 'dotenv-rails'
+
+gem 'jquery-rails'

@@ -1,38 +1,35 @@
--# .single-container
--#   .single-container__step4
--#     = render partial: "new-account-header"
--#   .single-container__single-main
--#     .single-container__single-main__account-single-container
--#       %h2.single-container__single-main__account-single-container__registration-title
--#         クレジットカード情報入力
--#       .single-container__single-main__account-single-container__registration-form
--#         = form_with url: signup_index_path, method: :post, html: { name: "inputForm" } do |f|
--#           .single-container__single-main__account-single-container__registration-form__upper-box
--#             .single-container__single-main__account-single-container__registration-form__upper-box__input-box
--#               = f.label "カード番号"
--#               %span.single-container__single-main__account-single-container__registration-form__upper-box__input-box__importance
--#                 必須
--#               = f.text_field :card_number, type: 'text', placeholder: '半角数字のみ', maxlength: "16", class: "single-container__single-main__account-single-container__registration-form__upper-box__input-box__text"
--#             .single-container__single-main__account-single-container__registration-form__upper-box__input-box
--#               = f.label "有効期限"
--#               %span.single-container__single-main__account-single-container__registration-form__upper-box__input-box__importance
--#                 必須
--#               .card-select-box
--#                 = fa_icon "chevron-down" ,class: "card-select-box__icon"
--#                 = f.select :exp_month, [["01",1],["02",2],["03",3],["04",4],["05",5],["06",6],["07",7],["08",8],["09",9],["10",10],["11",11],["12",12]],{} , class: 'card-select-box__select-lists'
--#                 %span.card-select-box__expire-text 月
--#               .card-select-box
--#                 = fa_icon "chevron-down" ,class: "card-select-box__icon"
--#                 = f.select :exp_year, [["19",2019],["20",2020],["21",2021],["22",2022],["23",2023],["24",2024],["25",2025],["26",2026],["27",2027],["28",2028],["29",2029]],{} , class: 'card-select-box__select-lists'
--#                 %span.card-select-box__expire-text 年
--#             .single-container__single-main__account-single-container__registration-form__upper-box__input-box
--#               = f.label "セキュリティコード"
--#               %span.single-container__single-main__account-single-container__registration-form__upper-box__input-box__importance
--#                 必須
--#               = f.text_field :cvc, type: 'text', placeholder: 'カード背面4桁もしくは3桁の番号', maxlength: "4", class: "single-container__single-main__account-single-container__registration-form__upper-box__input-box__text"
--#             .single-container__single-main__account-single-container__registration-form__bottom-box
--#               .single-container__single-main__account-single-container__registration-form__bottom-box__text-right2
--#                 %p.single-container__single-main__account-single-container__registration-form__bottom-box__text-right2__text カード裏面の番号とは？
--#             .content-bottom#card_token
--#               = f.submit '追加する', class: 'content-bottom--add-btn', id: 'token_submit'
--#   = render partial: "new-account-footer"
+.single-container
+  .single-container__single-main
+    .single-container__single-main__account-single-container
+      %h2.single-container__single-main__account-single-container__registration-title
+        クレジットカード情報入力
+      .single-container__single-main__account-single-container__registration-form
+        = form_with url: signup_index_path, method: :post, html: { name: "inputForm" } do |f|
+          .single-container__single-main__account-single-container__registration-form__upper-box
+            .single-container__single-main__account-single-container__registration-form__upper-box__input-box
+              = f.label "カード番号"
+              %span.single-container__single-main__account-single-container__registration-form__upper-box__input-box__importance
+                必須
+              = f.text_field :card_number, type: 'text', placeholder: '半角数字のみ', maxlength: "16", class: "single-container__single-main__account-single-container__registration-form__upper-box__input-box__text"
+            .single-container__single-main__account-single-container__registration-form__upper-box__input-box
+              = f.label "有効期限"
+              %span.single-container__single-main__account-single-container__registration-form__upper-box__input-box__importance
+                必須
+              .card-select-box
+                = fa_icon "chevron-down" ,class: "card-select-box__icon"
+                = f.select :exp_month, [["01",1],["02",2],["03",3],["04",4],["05",5],["06",6],["07",7],["08",8],["09",9],["10",10],["11",11],["12",12]],{} , class: 'card-select-box__select-lists'
+                %span.card-select-box__expire-text 月
+              .card-select-box
+                = fa_icon "chevron-down" ,class: "card-select-box__icon"
+                = f.select :exp_year, [["19",2019],["20",2020],["21",2021],["22",2022],["23",2023],["24",2024],["25",2025],["26",2026],["27",2027],["28",2028],["29",2029]],{} , class: 'card-select-box__select-lists'
+                %span.card-select-box__expire-text 年
+            .single-container__single-main__account-single-container__registration-form__upper-box__input-box
+              = f.label "セキュリティコード"
+              %span.single-container__single-main__account-single-container__registration-form__upper-box__input-box__importance
+                必須
+              = f.text_field :cvc, type: 'text', placeholder: 'カード背面4桁もしくは3桁の番号', maxlength: "4", class: "single-container__single-main__account-single-container__registration-form__upper-box__input-box__text"
+            .single-container__single-main__account-single-container__registration-form__bottom-box
+              .single-container__single-main__account-single-container__registration-form__bottom-box__text-right2
+                %p.single-container__single-main__account-single-container__registration-form__bottom-box__text-right2__text カード裏面の番号とは？
+            .content-bottom#card_token
+              = f.submit '追加する', class: 'content-bottom--add-btn', id: 'token_submit'

@@ -10,4 +10,11 @@ Rails.application.routes.draw do
       get 'done' 
     end
   end
+  resources :cards, only: [:show] do
+    collection do
+      post 'pay/:id', to: 'cards#pay'
+      get 'done/:id', to: 'cards#done'
+      get 'update/:id', to: 'cards#update'
+    end
+  end
 end
