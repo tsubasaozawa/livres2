@@ -1,0 +1,33 @@
+Sign up
+= form_for @user, url: step2_signup_index_path, method: :get do |f|
+  .field
+    = f.label :nickname
+    = f.text_field :nickname, autofocus: true, autocomplete: "例）たろう"
+    %br
+  .field
+    = f.label :fullname_kanji
+    = f.text_field :fullname_kanji, autofocus: true, autocomplete: "例）山田太郎"
+    %br
+  .field
+    = f.label :fullname_kana
+    = f.text_field :fullname_kana, autofocus: true, autocomplete: "例）ヤマダタロウ"
+    %br
+  .field
+    = f.label :birthday
+    != sprintf(f.date_select(:birthday, prefix:'birthday',  prompt:"--", use_month_numbers:true, with_css_classes: true, start_year:2019, end_year:1900, date_separator:'%s'),'年','月')+'日'
+    %br
+  .field
+    = f.label :email
+    = f.email_field :email, autofocus: true, autocomplete: "email"
+    %br
+  .field
+    = f.label :password
+    = f.password_field :password, autocomplete: "new-password"
+    %br
+  .field
+    = f.label :password_confirmation
+    = f.password_field :password_confirmation, autocomplete: "new-password"
+    %br
+
+  .actions
+    = f.submit "次へ進む"
