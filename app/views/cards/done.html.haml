@@ -1,0 +1,21 @@
+-# .new-conteiner
+-#   = render 'shared/new_header'
+-#   .purchase-conteiner
+-#     .purchase-conteiner__box
+-#       .purchase-conteiner__box__delivery-message
+-#         .purchase-conteiner__box__delivery-message__main-message
+-#           発送をお待ちください
+-#         .purchase-conteiner__box__delivery-message__sub-message
+-#           出品者からの発送通知をお待ちください
+-#       %h2.purchase-conteiner__box__purchase-message
+-#         購入が完了しました！
+-#       .purchase-conteiner__box__purchase-image
+-#         .purchase-conteiner__box__purchase-image__box
+-#           - @image.each do |i|
+-#             = image_tag(i.image_url.url, id: "product_image", class: "purchase-conteiner__box__purchase-image__box__image-top")
+-#         .purchase-conteiner__box__purchase-image__text
+-#           = @product.title
+-#         .purchase-conteiner__box__purchase-image__price
+-#           = "¥ #{@product.price.to_s.gsub(/(\d)(?=\d{3}+$)/, '\\1,')}"
+-#           = @freight
+-#   = render 'shared/new_footer'
