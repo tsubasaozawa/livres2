@@ -1,0 +1,82 @@
+.product-box
+  .product-box-conteiner
+    %h1.product-name
+      = @product.title 
+    .product-main-content
+      .product-image
+        .product-image__main
+          - @image.each_with_index do |i, index|
+            = image_tag(i.image.url, id: "product_image", class: "image-top imagemain#{index}")
+        .product-image__sub
+          - @image.each_with_index do |i, index|
+            = image_tag(i.image.url, id: "product_image", class: "image-subtop imagesub#{index}")
+      .product-detail
+        .sideways
+          .sideways__left-thick
+            .sideways__left-thick__title 出品者
+          .sideways__-right-thick
+            .sideways__right-thick__content
+              .add-height
+                = link_to "#{@product.saler.nickname}", {}, class: 'username-mp-link'
+        -# .sideways
+        -#   .sideways__left-thick
+        -#     .sideways__left-thick__title カテゴリー
+        -#   .sideways__-right-thick
+        -#     .sideways__right-thick__content 
+        -#       .sideways__right-thick__content--categories
+                -# %li
+                -#   = @product.categories[0]
+                -# %li.add-icon
+                -#   = @product.categories[1] 
+                -# %li.add-icon
+                -#   = @product.categories[2]
+        -# .sideways
+        -#   .sideways__left-thick
+        -#     .sideways__left-thick__title 商品の状態
+        -#   .sideways__-right-thick
+        -#     .sideways__right-thick__content
+        -#       .add-height
+        -#         = @condition
+        -# .sideways
+        -#   .sideways__left-thick
+        -#     .sideways__left-thick__title 配送料の負担
+        -#   .sideways__-right-thick
+        -#     .sideways__right-thick__content
+        -#       .add-height
+        -#         = @freight
+        -# .sideways
+        -#   .sideways__left-thick
+        -#     .sideways__left-thick__title 配送元地域
+        -#   .sideways__-right-thick
+        -#     .sideways__right-thick__content
+        -#       .add-height
+        -#         = @root_area
+        -# .sideways
+        -#   .sideways__left-thick
+        -#     .sideways__left-thick__title 発送日の目安
+        -#   .sideways__-right-thick
+        -#     .sideways__right-thick__content
+        -#       .add-height
+        -#         = @day
+    .price-bar  
+      %span.price-bar__bold
+        = "¥#{@product.price.to_s.gsub(/(\d)(?=\d{3}+$)/, '\\1,')} "
+      %span.price-bar__tax (税込)
+      -# %span.price-bar__shipping-fee
+      -#   = @freight
+
+      -# - unless user_signed_in? && @product.buyer_id == current_user.id
+      -#   - unless user_signed_in? && @product.saler_id == current_user.id
+      -#     - if user_signed_in?
+      -#       = link_to "購入画面に進む", purchase_path(@product.id) , class: 'status-bar__purchase'
+      -#     - else
+      -#       = link_to "購入画面に進む", new_user_session_path, class: 'status-bar__purchase'
+
+
+
+    .product-introduce
+      = @product.text
+
+
+
+        

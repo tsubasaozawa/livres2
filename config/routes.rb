@@ -17,4 +17,5 @@ Rails.application.routes.draw do
       get 'update/:id', to: 'cards#update'
     end
   end
+  resources :products
 end

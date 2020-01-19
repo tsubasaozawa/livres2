@@ -1,0 +1,9 @@
+.wrapper
+  = render "shared/header"
+  .buyer-show-main
+    = render "product_box"
+    = render "message_box"
+    -# - breadcrumb :buyer_show_product, @product
+    -# .breadcrumbs-buyer
+    -#   = breadcrumbs pretext: "",separator: " &rsaquo; ", class: "breadcrumbs-buyer__list"
+    = render 'shared/footer'
