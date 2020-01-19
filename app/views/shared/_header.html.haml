@@ -1,2 +1,21 @@
-= link_to destroy_user_session_path(current_user), method: :delete do
-  ログアウト
+.header
+  .header__upper-box
+    .header__upper-box__session-menu
+      = link_to "", method: :delete, class: "header__upper-box__session-menu__link" do
+        .header__upper-box__session-menu__link__button
+          %span My page
+      = link_to destroy_user_session_path(current_user), method: :delete, class: "header__upper-box__session-menu__link" do
+        .header__upper-box__session-menu__link__button
+          %span Log out
+  = link_to root_path, class: "text-decoration-none-black" do
+    .header__top-image
+      %li= image_tag "livres_small.png", class: "top-image-url"
+      %li - 本とともに「学び（価値）」を次へ -
+  .header__bottom-box
+    .header__bottom-box__top-menu
+      .header__bottom-box__top-menu__button
+        = link_to "", class: "text-decoration-none-black" do
+          %span Search
+      .header__bottom-box__top-menu__button
+        = link_to new_product_path, class: "text-decoration-none-black" do
+          %span New

@@ -1,0 +1,17 @@
+.sub_header
+  .sub_header__left-container
+    = link_to root_path, class: "" do
+      = image_tag "livres_small.png", class: "sub-header-logo"
+  .sub_header__right-container
+    = link_to "", class: "text-decoration-none-black" do
+      .sub_header__right-container__button
+        %span Search
+    = link_to new_product_path, class: "text-decoration-none-black" do
+      .sub_header__right-container__button
+        %span New
+    = link_to "", method: :delete, class: "header__upper-box__session-menu__link" do
+      .sub_header__right-container__button
+        %span My page
+    = link_to destroy_user_session_path(current_user), method: :delete, class: "header__upper-box__session-menu__link" do
+      .sub_header__right-container__button
+        %span Log out

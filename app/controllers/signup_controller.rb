@@ -41,7 +41,7 @@ class SignupController < ApplicationController
     #   @user.provider = session["devise.provider_data"]["provider"]
     # end
 
-    Payjp.api_key = ENV['PAYJP_ACCESS_KEY']
+    Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
     if params['payjp-token'].blank?
       redirect_to action: "step4"
     else

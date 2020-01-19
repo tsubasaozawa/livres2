@@ -1,0 +1,30 @@
+$main-black-color: rgb(36, 35, 35);
+$main-white-color: #ffffff;
+
+*, *:before, *:after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  color: rgb(36, 35, 35);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.text-decoration-none-black{
+  text-decoration: none;
+  color: $main-black-color;
+}
+
+.text-decoration-none-white{
+  text-decoration: none;
+  color: $main-white-color;
+}

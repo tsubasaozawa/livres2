@@ -1,12 +1,14 @@
 = render 'shared/header'
-Hello world
 
-= link_to new_product_path do
-  投稿する
-
-- @products.each do |product|
-  = link_to product_path(product.id), class: "" do
-    ¥#{product.price.to_s.gsub(/(\d)(?=\d{3}+$)/, '\\1,')}
-    - product.images.each do |img|
-      = image_tag(img.image.url, class:"")
-    = product.title
+.index-wrapper
+  .index-wrapper__products-box
+    - @products.each do |product|
+      .product-card
+        .product-card__product-image
+          = link_to product_path(product.id), class: "" do
+            = image_tag(product.images[0].image.url, class: "index-product-image")
+        .product-card__container
+          .product-card__container__product-title
+            %span= product.title
+          .product-card__container__product-description
+            ¥#{product.price.to_s.gsub(/(\d)(?=\d{3}+$)/, '\\1,')}

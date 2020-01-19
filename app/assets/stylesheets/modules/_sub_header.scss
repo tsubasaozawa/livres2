@@ -1,0 +1,33 @@
+.sub_header{
+  display: flex;
+  justify-content: space-between;
+  width: 1300px;
+  margin: 0 auto;
+
+  &__left-container{
+    margin-top: 10px;
+
+    .sub-header-logo{
+      height: 50px;
+    }
+  }
+
+  &__right-container{
+    display: flex;
+    line-height: 60px;
+
+    &__button{
+      padding: 0 10px;
+
+      span{
+        padding-bottom: 4px;
+        transition: 0.2s ;
+        
+        &:hover{
+          border-bottom: solid 2px #ead38e;
+          color: #ead38e;
+        }
+      }
+    }
+  }
+}
