@@ -1,49 +1,51 @@
 class CardsController < ApplicationController
-  # def show
-  #   card = Card.where(user_id: current_user.id).first
-  #   if card.blank?
-  #     redirect_to controller: "card", action: "new"
-  #   else
-  #     @product = Product.find(params[:id])
-  #     @image = Image.where(product_id: @product )
-  #     @freights = Freight.find_by product_id: @product
-  #   if @freights.freight == 1
-  #     @freight = "送料込み(出品者負担)"
-  #   else
-  #     @freight = "着払い(購入者負担)"
-  #   end
-  #     Payjp.api_key = ENV['PAYJP_ACCESS_KEY']
-  #     customer = Payjp::Customer.retrieve(card.customer_id)
-  #     @default_card_information = customer.cards.retrieve(card.card_id)
-  #   end
-  # end
+  require "payjp"
 
-  def pay
-    @product = Product.find(params[:id])
-    card = Card.where(user_id: current_user.id).first
-    Payjp.api_key = ENV['PAYJP_ACCESS_KEY']
-    Payjp::Charge.create(
-    :amount => @product.price,
-    :customer => card.customer_id,
-    :currency => 'jpy',
-    )
-  redirect_to action: 'update'
+  def new
+    card = Card.where(user_id: current_user.id)
+    redirect_to card_path(current_user) if card.exists?
   end
 
-  # def done
-  #   @product = Product.find(params[:id])
-  #   @image = Image.where(product_id: @product )
-  #   @freights = Freight.find_by product_id: @product
-  #   if @freights.freight == 1
-  #     @freight = "送料込み(出品者負担)"
-  #   else
-  #     @freight = "着払い(購入者負担)"
-  #   end
-  # end
+  def pay
+    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+    if params['payjp-token'].blank?
+      redirect_to action: :new
+    else
+      customer = Payjp::Customer.create(
+      description: '登録テスト',
+      email: current_user.email,
+      card: params['payjp-token'],
+      metadata: {user_id: current_user.id}
+      )
+      @card = Card.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
+      if @card.save
+        redirect_to card_path(current_user)
+      else
+        redirect_to pay_card(current_user)
+      end
+    end
+  end
 
-  # def update
-  #   @product = Product.find(params[:id])
-  #   @product.update(buyer_id: current_user.id)
-  #   redirect_to action: 'done'
-  # end
+  def delete
+    card = Card.where(user_id: current_user.id).first
+    if card.blank?
+    else
+      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+      customer = Payjp::Customer.retrieve(card.customer_id)
+      customer.delete
+      card.delete
+    end
+      redirect_to action: :new
+  end
+
+  def show
+    card = Card.where(user_id: current_user.id).first
+    if card.blank?
+      redirect_to action: :new 
+    else
+      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+      customer = Payjp::Customer.retrieve(card.customer_id)
+      @default_card_information = customer.cards.retrieve(card.card_id)
+    end
+  end
 end

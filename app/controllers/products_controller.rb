@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
   before_action :load_mydata, only: [:my_product_show, :destroy, :show, :edit]
   
   def index
-    @products = Product.includes(:images).order("id DESC")
+    @products = Product.where(buyer_id:nil).includes(:images).order("id DESC")
   end
 
   def new
@@ -29,52 +29,52 @@ class ProductsController < ApplicationController
 
   # 要調整------------------------------------------
 
-  def edit
-    @product = Product.find(params[:id])
-    @user = current_user
-    @images = Image.where(product_id: @product)
-    @category_parent_array = ["---"]
-    Category.where(ancestry: nil).each do |parent|
-      @category_parent_array << parent.name
-    end
-  end
+  # def edit
+  #   @product = Product.find(params[:id])
+  #   @user = current_user
+  #   @images = Image.where(product_id: @product)
+  #   @category_parent_array = ["---"]
+  #   Category.where(ancestry: nil).each do |parent|
+  #     @category_parent_array << parent.name
+  #   end
+  # end
 
-  def destroy
-    @products = current_user.products
-    if @product.saler_id == current_user.id
-      @product.destroy
-      redirect_to show_exhibit_user_path(current_user)
-    else
-      render :show, notice: '削除できませんでした'
-    end
-  end
+  # def destroy
+  #   @products = current_user.products
+  #   if @product.saler_id == current_user.id
+  #     @product.destroy
+  #     redirect_to show_exhibit_user_path(current_user)
+  #   else
+  #     render :show, notice: '削除できませんでした'
+  #   end
+  # end
   
-  def update
-    if @product.update(product_params)
-      redirect_to product_path
-    else
-      render 'show'
-    end
-  end
+  # def update
+  #   if @product.update(product_params)
+  #     redirect_to product_path
+  #   else
+  #     render 'show'
+  #   end
+  # end
 
-  def search
-    @products = Product.where('title LIKE(?) OR text LIKE(?)', "%#{params[:keyword]}%","%#{params[:keyword]}%").order(created_at:"desc")
-  end
-
-
-  def get_category_children
-    @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
-  end
-
-  def get_category_grandchildren
-    @category_grandchildren = Category.find("#{params[:child_id]}").children
-  end
+  # def search
+  #   @products = Product.where('title LIKE(?) OR text LIKE(?)', "%#{params[:keyword]}%","%#{params[:keyword]}%").order(created_at:"desc")
+  # end
 
 
-  def image_destroy
-    @image = Image.find(params[:image_id])
-    @image.destroy
-  end
+  # def get_category_children
+  #   @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
+  # end
+
+  # def get_category_grandchildren
+  #   @category_grandchildren = Category.find("#{params[:child_id]}").children
+  # end
+
+
+  # def image_destroy
+  #   @image = Image.find(params[:image_id])
+  #   @image.destroy
+  # end
 
   # ------------------------------------------
 
