@@ -1,5 +1,6 @@
 $main-black-color: rgb(36, 35, 35);
 $main-white-color: #ffffff;
+$main-light-gray-color: #eeeeee;
 
 *, *:before, *:after {
   -webkit-box-sizing: border-box;
@@ -19,12 +20,22 @@ input[type=number]::-webkit-outer-spin-button {
   margin: 0;
 }
 
-.text-decoration-none-black{
+.text-decoration-none{
   text-decoration: none;
+}
+
+.font-color-black{
   color: $main-black-color;
 }
 
-.text-decoration-none-white{
-  text-decoration: none;
+.font-color-white{
   color: $main-white-color;
+}
+
+.font-color-light-gray{
+  color: $main-light-gray-color;
+}
+
+.active{
+  color: black;
 }

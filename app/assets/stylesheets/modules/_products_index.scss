@@ -28,6 +28,20 @@
         }
       }
 
+      &__info{
+        display: flex;
+        justify-content: space-between;
+        padding: 5px;
+
+        &__price{
+
+        }
+        &__like{
+          font-size: 12px;
+          
+        }
+      }
+
       &__container{
         position: relative;
         display: inline-block;
@@ -43,7 +57,7 @@
           content: "";
           position: absolute;
           top: -30px;
-          left: 20%;
+          right: 20%;
           margin-left: -15px;
           border: 15px solid transparent;
           border-bottom: 15px solid #ececeb;

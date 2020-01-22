@@ -1,0 +1,107 @@
+= render "shared/sub_header"
+= render "product_form", product: @product
+-# = form_for @product do |f|
+-#   .exhibit-wrapper
+-#     .exhibit-wrapper__header
+-#       .exhibit-wrapper__header__logo
+-#     .exhibit-wrapper__main
+-#       .exhibit-wrapper__main__header
+-#         %h3 商品の情報を入力
+-#       .exhibit-wrapper__main__image
+-#         %h3 
+-#           出品画像
+-#           %span 必須
+-#         %p 最大10枚までアップロードできます
+-#         .image__images
+-#           = f.fields_for :images do |img|
+-#             .image__images__box{"data-image-id": "#{img.object.id}"}
+-#               = img.file_field :image, class: "file-field", style: "display:none;", id: "edit-file#{img.object.id}", value: "#{img.object.image.url}"
+-#               = image_tag(img.object.image.to_s, id: "product_image",  height: '120', width: '120')
+-#               = img.hidden_field :id, value: img.object.id  
+-#               .edit_btns
+-#                 .change_btn
+-#                   .change_btn-text 編集                     
+-#                 .delete_btn 
+-#                   .delete_btn-text 削除
+
+-#             .exhibit-wrapper__main__image__cards_anchor
+-#           .error-append__image
+-#         .exhibit-wrapper__main__item
+-#           .exhibit-wrapper__main__item__name
+-#             %label 
+-#               商品名
+-#               %span 必須
+-#             =f.text_field :title, class: "exhibit-wrapper__main__item__name__field", placeholder: "商品名（必須40文字まで）"
+-#             .error-append__title
+-#           .exhibit-wrapper__main__item__content
+-#             %label 
+-#               商品の説明
+-#               %span 必須
+-#             =f.text_area :text, rows:"6", class: "exhibit-wrapper__main__item__content__area" , placeholder: "商品の説明（必須1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
+-#             .error-append__detail
+-#       -# .category
+-#       -#   .sub-head 商品の詳細
+-#       -#   .form__right
+-#       -#     .form-group
+-#       -#       .form-group__top
+-#       -#         = f.label 'カテゴリー'
+-#       -#         .form-require 必須
+-#       -#       .listing-product-detail__category
+-#       -#         .select-wrap
+-#       -#           = f.select :categories, @category_parent_array, {}, {:name => 'product[categories][]', id: 'parent_category', class: 'select-default'}
+-#       -#       %br/
+-#       -#     .form-group
+-#       -#       .form-group__top
+-#       -#         = f.label '商品の状態'
+-#       -#         .form-require 必須
+-#       -#       = f.fields_for :condition do |c|
+-#       -#         .select-wrap
+-#       -#           = c.select :condition, [["新品、未使用","1"],["未使用に近い","2"],["目立った傷や汚れなし","3"],["やや傷や汚れあり","4"],["傷や汚れあり","5"],["全体的に状態が悪い","6"]],{prompt: "---"}, { class: 'select-default'}
+-#       -# .delivery
+-#       -#   .sub-head 配送について
+-#       -#   .form__right
+-#       -#     .form-group
+-#       -#       .form-group__top
+-#       -#         = f.label '配送料の負担'
+-#       -#         .form-require 必須
+-#       -#       = f.fields_for :freight do |freight|
+-#       -#         .select-wrap
+-#       -#           = freight.select :freight, [["送料込み(出品者負担)","1"],["着払い(購入者負担)","2"]],{prompt: "---"}, {class: 'select-default'}
+-#       -#     .form-group
+-#       -#       .form-group__top
+-#       -#         =f.label '発送元の地域'
+-#       -#         .form-require 必須
+-#       -#       = f.fields_for :root_area do |r|
+-#       -#         .select-wrap
+-#       -#           = r.select :root_area, [["北海道","北海道"],["青森","青森"],["岩手","岩手"],["宮城","宮城"],["秋田","秋田"],["山形","山形"],["福島","福島"],["茨城","茨城"],["栃木","栃木"],["群馬","群馬"],["埼玉","埼玉"],["千葉","千葉"],["東京","東京"],["神奈川","神奈川"]], {prompt: "---"}, {class: 'select-default'}
+-#       -#     .form-group
+-#       -#       .form-group__top
+-#       -#         =f.label '発送までの日数'
+-#       -#         .form-require 必須
+-#       -#       = f.fields_for :day do |d|
+-#       -#         .select-wrap
+-#       -#           = d.select :day, [["1~2日で発送","1"],["2~3日で発送","2"],["4~7日で発送","3"]],{prompt: "---"}, {class: 'select-default'}
+-#       .price
+-#         .sub-head 販売価格(300〜9,999,999)
+-#         .form__right
+-#           %ul.sell-price
+-#             %li.form-group
+-#               .form-group__top
+-#                 .form-group__top__left
+-#                   =f.label '価格'
+-#                   .form-require 必須
+-#                 .form-group__top__right
+-#                   = f.number_field :price, placeholder: '例) 300', class: 'form-group__top__right__input',id: 'price_calc'
+-#             %li.calculation
+-#               .calculation__left 販売手数料(10%)
+-#               .calculation__right
+-#             %li.result
+-#               .result__left 販売利益
+-#               .result__right -
+
+-#       .bottom 
+-#         .bottom__p
+
+-#         = f.hidden_field :saler_id, value: current_user.id
+-#         = f.submit :"出品する", class: "btn-red btn-default"
+-#         = link_to 'もどる', :back, class: "btn-gray btn-default"

@@ -7,8 +7,14 @@
         .product-card__product-image
           = link_to product_path(product.id), class: "" do
             = image_tag(product.images[0].image.url, class: "index-product-image")
+        .product-card__info
+          .product-card__info__price
+            ¥#{product.price.to_s.gsub(/(\d)(?=\d{3}+$)/, '\\1,')}
+          .product-card__info__like
+            #{}人がいいねしています！
+            = fa_icon "heart-o"
         .product-card__container
           .product-card__container__product-title
             %span= product.title
-          .product-card__container__product-description
-            ¥#{product.price.to_s.gsub(/(\d)(?=\d{3}+$)/, '\\1,')}
+          -# .product-card__container__product-description
+          -#   = product.saler_id

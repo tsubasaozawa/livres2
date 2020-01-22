@@ -29,33 +29,33 @@ class ProductsController < ApplicationController
 
   # 要調整------------------------------------------
 
-  # def edit
-  #   @product = Product.find(params[:id])
-  #   @user = current_user
-  #   @images = Image.where(product_id: @product)
-  #   @category_parent_array = ["---"]
-  #   Category.where(ancestry: nil).each do |parent|
-  #     @category_parent_array << parent.name
-  #   end
-  # end
+  def edit
+    10.times {@product.images.build}
+    # @user = current_user
+    @images = Image.where(product_id: @product)
+    # @category_parent_array = ["---"]
+    # Category.where(ancestry: nil).each do |parent|
+    #   @category_parent_array << parent.name
+    # end
+  end
 
-  # def destroy
-  #   @products = current_user.products
-  #   if @product.saler_id == current_user.id
-  #     @product.destroy
-  #     redirect_to show_exhibit_user_path(current_user)
-  #   else
-  #     render :show, notice: '削除できませんでした'
-  #   end
-  # end
+  def destroy
+    @products = current_user.products
+    if @product.saler_id == current_user.id
+      @product.destroy
+      redirect_to user_path(current_user)
+    else
+      render :show, notice: '削除できませんでした'
+    end
+  end
   
-  # def update
-  #   if @product.update(product_params)
-  #     redirect_to product_path
-  #   else
-  #     render 'show'
-  #   end
-  # end
+  def update
+    if @product.update(product_params)
+      redirect_to product_path
+    else
+      render 'show'
+    end
+  end
 
   # def search
   #   @products = Product.where('title LIKE(?) OR text LIKE(?)', "%#{params[:keyword]}%","%#{params[:keyword]}%").order(created_at:"desc")

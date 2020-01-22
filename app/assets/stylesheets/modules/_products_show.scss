@@ -49,7 +49,7 @@
           word-wrap: break-word;
           position: relative;
           display: inline-block;
-          margin: 0 0 0 15px;
+          margin: 0 0 0 10px;
           padding: 7px 10px;
           border-radius: 10px;
           min-width: 120px;
@@ -62,7 +62,7 @@
             content: "";
             position: absolute;
             top: 50%;
-            left: -30px;
+            left: -25px;
             margin-top: -15px;
             border: 15px solid transparent;
             border-right: 15px solid #ececeb;
@@ -171,6 +171,26 @@
           color: #0099e8;
         }
       }
+    }
+  }
+}
+
+.product-edit-box {
+
+  &__edit-btn {
+    margin-top: 16px;
+    display: block;
+    font-size: 24px;
+    line-height: 60px;
+    text-align: center;
+    font-weight: 600;
+    background: #030b74;
+    color: #fff;
+    text-decoration: none;
+    transition: 0.2s;
+
+    &:hover{
+      background: #333cbb;
     }
   }
 }

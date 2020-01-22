@@ -1,0 +1,92 @@
+-# .wrapper
+-#   = render 'shared/sub_header'
+-#   -# - breadcrumb :user, current_user
+-#   -# = render 'layouts/breadcrumbs'
+-#   .large-mp-main-contents
+-#     .mp-main-contents
+-#       = render "mypage_sidebar"
+-#       .mp-right-box
+-#         .mp-right-box__user-icon
+-#           = link_to(user_path, class: "mp-right-box__user-icon__bar") do
+-#             .mp-right-box__user-icon__bar__figure
+-#               .mp-right-box__user-icon__bar__figure__img
+-#                 = image_tag("https://static.mercdn.net/images/member_photo_noimage_thumb.png", height: '60', width: '60')
+-#             .mp-right-box__user-icon__bar__name
+-#               61_mercari_team-B
+-#             .mp-right-box__user-icon__bar__my-data
+-#               評価&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;出品数&nbsp;&nbsp;0
+-#         .mp-right-box__tab-container-top
+-#           .mp-right-box__tab-container-top__tabs
+-#             .mp-right-box__tab-container-top__tabs__inform
+-#               .mp-right-box__tab-container-top__tabs__inform__2
+-#                 .mp-right-box__tab-container-top__tabs__inform__2__3
+-#                   お知らせ
+-#             .mp-right-box__tab-container-top__tabs__todo
+-#               .mp-right-box__tab-container-top__tabs__todo__2
+-#                 .mp-right-box__tab-container-top__tabs__inform__2__3
+-#                   やることリスト
+-#           .mp-right-box__tab-container-top__contents
+-#             .mp-right-box__tab-container-top__contents__inform
+-#               .mp-right-box__tab-container-top__contents__inform__li1
+-#                 .mp-right-box__tab-container-top__contents__inform__li1__link
+-#                   .mp-right-box__tab-container-top__contents__inform__li1__link__figure
+-#                     = image_tag("https://www.juku90.com/wp-content/uploads/2019/05/000-2.jpg", size: "53x53", alt: "mercari")
+-#                   .mp-right-box__tab-container-top__contents__inform__li1__link__body
+-#                     .mp-right-box__tab-container-top__contents__inform__li1__link__body__text
+-#                     《友達・家族を招待するとP1,000プレゼント》お互いの招待コードを交換して一緒にはじめればそれぞれP2,000もらえる
+-#                     .mp-right-box__tab-container-top__contents__inform__li1__link__body__timecombi
+-#                       .mp-right-box__tab-container-top__contents__inform__li1__link__body__timecombi__icontime
+-#                         = fa_icon "clock-o", class: "mp-right-box__tab-container-top__contents__inform__li1__link__body__timecombi__icontime__icon"
+-#                         &nbsp;6時間前
+-#                     .mp-right-box__tab-container-top__contents__inform__li1__link__body__right-icon
+-#                       %i.far.fa-angle-right
+
+
+-#           .mp-right-box__tab-container-top__list
+-#             = link_to "一覧を見る", user_path, class: "mp-right-box__tab-container-top__list__btn"
+              
+-#           .mp-right-box__tab-container-top__contents__todo
+          
+-#         .mp-right-box__data-modal
+
+-#         .mp-right-box__tab-container-bottom
+-#           .mp-right-box__tab-container-bottom__head
+-#             購入した商品
+-#           .mp-right-box__tab-container-bottom__head__tabs
+-#             .mp-right-box__tab-container-bottom__head__tabs__trade
+-#               .mp-right-box__tab-container-bottom__head__tabs__trade__2
+-#                 .mp-right-box__tab-container-bottom__head__tabs__trade__2__3
+-#                   取引中
+-#             .mp-right-box__tab-container-bottom__head__tabs__old-trade
+-#               .mp-right-box__tab-container-bottom__head__tabs__old-trade__2
+-#                 .mp-right-box__tab-container-bottom__head__tabs__old-trade__2__3
+-#                   過去の取引
+          
+-#           .mp-right-box__tab-container-bottom__contents
+-#             .mp-right-box__tab-container-bottom__contents__deal-now
+-#               .mp-right-box__tab-container-bottom__contents__deal-now__logo
+-#                 = link_to image_tag("https://www-mercari-jp.akamaized.net/assets/img/common/common/logo-gray.svg?404657508", size: "120x120", alt: "mercari")
+-#               .mp-right-box__tab-container-bottom__contents__deal-now__list
+-#                 取引中の商品がありません
+-#             .mp-right-box__tab-container-bottom__contents__old-deal
+-#               .mp-right-box__tab-container-bottom__contents__old-deal__list
+
+-#     = render 'shared/footer'
+
+= render partial: "shared/sub_header"
+.my-page
+  .my-page__user-prof
+    = render "mypage_middle", user: @user
+    .my-page__users-posts
+      .my-page__users-posts__item
+        = link_to user_path, class: "text-decoration-none font-color-light-gray active" do
+          .my-page__users-posts__item__status
+            出品中
+        = link_to sold_products_user_path, class: "text-decoration-none font-color-light-gray" do
+          .my-page__users-posts__item__status
+            売却済
+        = link_to bought_products_user_path, class: "text-decoration-none font-color-light-gray" do
+          .my-page__users-posts__item__status
+            購入済
+      .my-page__users-posts__post
+        = render "myproducts", products: @saling_products

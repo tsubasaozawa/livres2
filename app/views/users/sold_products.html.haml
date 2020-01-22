@@ -1,0 +1,17 @@
+= render partial: "shared/sub_header"
+.my-page
+  .my-page__user-prof
+    = render "mypage_middle", user: @user
+    .my-page__users-posts
+      .my-page__users-posts__item
+        = link_to user_path, class: "text-decoration-none font-color-light-gray" do
+          .my-page__users-posts__item__status
+            出品中
+        = link_to sold_products_user_path, class: "text-decoration-none font-color-light-gray active" do
+          .my-page__users-posts__item__status
+            売却済
+        = link_to bought_products_user_path, class: "text-decoration-none font-color-light-gray" do
+          .my-page__users-posts__item__status
+            購入済
+      .my-page__users-posts__post
+        = render "myproducts", products: @sold_products

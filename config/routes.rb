@@ -11,6 +11,13 @@ Rails.application.routes.draw do
       get 'done' 
     end
   end
+  resources :users, only: [:show, :edit, :update] do
+    get 'users/:name', controller: 'users', action: 'edit'
+    member do
+      get :bought_products
+      get :sold_products
+    end
+  end
   resources :purchase, only: [:show] do
     collection do
       post 'pay/:id', to: 'purchase#pay'

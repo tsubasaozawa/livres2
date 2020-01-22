@@ -1,0 +1,37 @@
+.image__images {
+  display: flex;
+  flex-wrap: wrap;
+  &__box {
+    border: 1px solid #eee;
+    margin: 5px 0 5px 0;
+    .edit_btns {
+      display: flex;
+      .delete_btn {
+        background: #f5f5f5;
+        line-height: 44px;
+        text-align: center;
+        color: #0099e8;
+        width: 50%;
+        cursor: pointer;
+        cursor: hand;
+        border-left: 1px solid #eee;
+      }
+      .change_btn {
+        background: #f5f5f5;
+        line-height: 44px;
+        text-align: center;
+        color: #0099e8;
+        width: 50%;
+        cursor: pointer;
+        cursor: hand;
+
+      }
+      .delete_btn:hover {
+        opacity: 0.5;
+      }
+      .change_btn:hover {
+        opacity: 0.5;
+      }
+    }
+  }
+}

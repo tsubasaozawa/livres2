@@ -1,0 +1,17 @@
+.my-page__user-prof__detail
+  .my-page__user-prof__detail__image
+    = image_tag "https://demo.a-blogcms.jp/media/001/201902/1c35033abff55e4664a216314d599201.png", class: "profile-image"
+  .my-page__user-prof__detail__text
+    .my-page__user-prof__detail__text__box
+      .my-page__user-prof__detail__text__box__users-info
+        ユーザー名：
+        = user.nickname
+        = link_to edit_user_path(current_user) , class: "users-info-edit"do
+          = fa_icon "cogs", class: "user-cogs"
+      .my-page__user-prof__detail__text__box__users-status
+        .my-page__user-prof__detail__text__box__users-status__posts-count
+          投稿数：#{@user.products.count}件
+        .my-page__user-prof__detail__text__box__users-status__liked-posts
+          -# お気に入り記事数：#{@product.count}件
+        .my-page__user-prof__detail__text__box__users-status__liked-users
+          -# お気に入りユーザー数：#{@like_user.count}件
