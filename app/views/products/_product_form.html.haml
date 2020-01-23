@@ -34,17 +34,16 @@
             %span 必須
           =f.text_area :text, rows:"6", class: "exhibit-wrapper__main__item__content__area" , placeholder: "商品の説明（必須1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
           .error-append__detail
-      -# .category
-      -#   .sub-head 商品の詳細
-      -#   .form__right
-      -#     .form-group
-      -#       .form-group__top
-      -#         = f.label 'カテゴリー'
-      -#         .form-require 必須
-      -#       .listing-product-detail__category
-      -#         .select-wrap
-      -#           = f.select :categories, @category_parent_array, {}, {:name => 'product[categories][]', id: 'parent_category', class: 'select-default'}
-      -#       %br/
+      .category
+        .sub-head 商品の詳細
+        .form__right
+          .form-group
+            .form-group__top
+              = f.label 'カテゴリー'
+              %span 必須
+            .listing-product-detail__category
+              .select-wrap
+                = f.select :categories, @category_parent_array, {}, {:name => 'product[categories][]', id: 'parent_category', class: 'select-default'}
       -#     .form-group
       -#       .form-group__top
       -#         = f.label '商品の状態'

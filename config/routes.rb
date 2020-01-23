@@ -1,7 +1,21 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: "products#index"
-  resources :products
+  resources :products do
+    collection do
+      get 'get_category_children', defaults: { format: 'json' }
+      get 'get_category_grandchildren', defaults: { format: 'json' }
+    end
+    member do
+      get 'get_category_children', defaults: { format: 'json' }
+      get 'get_category_grandchildren', defaults: { format: 'json' }
+    end
+
+    member do
+      post 'image_destroy', defaults: { format: 'json' }
+    end
+  end
+
   resources :signup, except: [:index, :show] do
     collection do
       get 'step1'

@@ -32,12 +32,17 @@
         display: flex;
         justify-content: space-between;
         padding: 5px;
+        background: linear-gradient(transparent 90%, #ead38ece 90%);
 
         &__price{
 
         }
         &__like{
-          font-size: 12px;
+          font-size: 11px;
+
+          span{
+            font-size: 16px;
+          }
           
         }
       }
