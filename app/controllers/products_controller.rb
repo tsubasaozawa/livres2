@@ -10,6 +10,14 @@ class ProductsController < ApplicationController
   def new
     @product = Product.new
     10.times {@product.images.build}
+    # @product.build_condition
+    # @product.build_freight
+    # @product.build_root_area
+    # @product.build_day
+    @category_parent_array = ["---"]
+    Category.where(ancestry: nil).each do |parent|
+      @category_parent_array << parent.name
+    end
   end
 
   def create
@@ -27,16 +35,14 @@ class ProductsController < ApplicationController
   # def my_product_show
   # end
 
-  # 要調整------------------------------------------
-
   def edit
     10.times {@product.images.build}
     # @user = current_user
     @images = Image.where(product_id: @product)
-    # @category_parent_array = ["---"]
-    # Category.where(ancestry: nil).each do |parent|
-    #   @category_parent_array << parent.name
-    # end
+    @category_parent_array = ["---"]
+    Category.where(ancestry: nil).each do |parent|
+      @category_parent_array << parent.name
+    end
   end
 
   def destroy
@@ -62,19 +68,19 @@ class ProductsController < ApplicationController
   # end
 
 
-  # def get_category_children
-  #   @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
-  # end
+  def get_category_children
+    @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
+  end
 
-  # def get_category_grandchildren
-  #   @category_grandchildren = Category.find("#{params[:child_id]}").children
-  # end
+  def get_category_grandchildren
+    @category_grandchildren = Category.find("#{params[:child_id]}").children
+  end
 
 
-  # def image_destroy
-  #   @image = Image.find(params[:image_id])
-  #   @image.destroy
-  # end
+  def image_destroy
+    @image = Image.find(params[:image_id])
+    @image.destroy
+  end
 
   # ------------------------------------------
 
@@ -85,7 +91,7 @@ class ProductsController < ApplicationController
       :text,
       :price,
       :saler_id,
-      # {categories: []},
+      {categories: []},
       images_attributes: [:id, :image],
       # condition_attributes: [:condition],
       # freight_attributes: [:freight],

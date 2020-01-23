@@ -48,18 +48,18 @@
             .sideways__right-thick__content
               .add-height
                 = link_to "#{@product.saler.nickname}", {}, class: 'username-mp-link'
-        -# .sideways
-        -#   .sideways__left-thick
-        -#     .sideways__left-thick__title カテゴリー
-        -#   .sideways__-right-thick
-        -#     .sideways__right-thick__content 
-        -#       .sideways__right-thick__content--categories
-                -# %li
-                -#   = @product.categories[0]
-                -# %li.add-icon
-                -#   = @product.categories[1] 
-                -# %li.add-icon
-                -#   = @product.categories[2]
+        .sideways
+          .sideways__left-thick
+            .sideways__left-thick__title カテゴリー
+          .sideways__-right-thick
+            .sideways__right-thick__content 
+              .sideways__right-thick__content--categories
+                %li
+                  = @product.categories[0]
+                %li.add-icon
+                  = @product.categories[1] 
+                %li.add-icon
+                  = @product.categories[2]
         -# .sideways
         -#   .sideways__left-thick
         -#     .sideways__left-thick__title 商品の状態
