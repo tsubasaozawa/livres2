@@ -2,6 +2,7 @@ class ProductsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_product, only: [:update, :destroy, :show, :edit, :show] 
   before_action :load_mydata, only: [:my_product_show, :destroy, :show, :edit]
+  before_action :set_like, only: [:index, :show, :search]
   
   def index
     @products = Product.where(buyer_id:nil).includes(:images).order("id DESC")
@@ -102,6 +103,10 @@ class ProductsController < ApplicationController
 
   def set_product
     @product = Product.find(params[:id])
+  end
+
+  def set_like
+    @like = Like.new
   end
 
   def load_mydata
