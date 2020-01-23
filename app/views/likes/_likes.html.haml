@@ -1,0 +1,8 @@
+- if current_user.already_liked?(product)
+  #{product.likes.count}人がいいね!しました
+  = link_to product_like_path(product,current_user), method: :delete, remote: true, class: "text-decoration-none liked-icon" do
+    %span= fa_icon "heart", class: "text-decoration-none like"
+- else
+  #{product.likes.count}人がいいね!しました
+  = link_to product_likes_path(product), method: :post, remote: true, class: "text-decoration-none like-icon" do
+    %span= fa_icon "heart-o", class: "text-decoration-none font-color-black"

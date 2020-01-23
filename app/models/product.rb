@@ -7,6 +7,10 @@ class Product < ApplicationRecord
   has_many :images, dependent: :destroy
   accepts_nested_attributes_for :images
 
+  has_many :likes
+  has_many :liked_users, through: :likes, source: :user
+
   validates :images, presence: true
   serialize :categories, JSON
+  
 end

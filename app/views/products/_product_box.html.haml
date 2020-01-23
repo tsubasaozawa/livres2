@@ -60,6 +60,14 @@
                   = @product.categories[1] 
                 %li.add-icon
                   = @product.categories[2]
+        .sideways
+          .sideways__left-thick
+            .sideways__left-thick__title 出品者
+          .sideways__-right-thick
+            .sideways__right-thick__content
+              .add-height{id: "like-btn-#{@product.id}"}
+                = render "likes/likes", product: @product
+
         -# .sideways
         -#   .sideways__left-thick
         -#     .sideways__left-thick__title 商品の状態
