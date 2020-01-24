@@ -9,7 +9,7 @@
     = link_to new_product_path, class: "text-decoration-none font-color-black" do
       .sub_header__right-container__button
         %span New
-    = link_to "", method: :delete, class: "text-decoration-none font-color-black" do
+    = link_to user_path(current_user), class: "text-decoration-none font-color-black" do
       .sub_header__right-container__button
         %span My page
     = link_to destroy_user_session_path(current_user), method: :delete, class: "text-decoration-none font-color-black" do

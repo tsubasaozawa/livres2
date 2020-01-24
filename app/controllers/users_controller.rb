@@ -4,11 +4,8 @@ class UsersController < ApplicationController
 
   def show
     @saling_products = User.find(params[:id]).saling_products
-    
-    # @like_posts = @user.liked_posts.pluck(:user_id).uniq
-    # @users = User.find(@like_posts)
-    # @like_users = @users.map { |h| h[:id] }
-    # @like_user = @like_users.reject { |n| n == current_user.id }
+
+    @liked_users = @user.liked_products.pluck(:saler_id).uniq
 
     # @posts = @user.liked_posts.map { |h| h[:user_id] }
     # @post = @posts.reject { |n| n == current_user.id }
