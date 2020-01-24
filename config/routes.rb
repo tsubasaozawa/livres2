@@ -23,15 +23,15 @@ Rails.application.routes.draw do
       get 'step2'
       get 'step3'
       post 'create',to:'signup#create'
-      get 'done' 
+      get 'done'
     end
   end
-  resources :users, only: [:show, :edit, :update] do
-    get 'users/:name', controller: 'users', action: 'edit'
+  resources :users, only: [:edit, :show, :update] do
     member do
       get :bought_products
       get :sold_products
     end
+    get '/:name', controller: 'users', action: 'edit'
   end
   resources :purchase, only: [:show] do
     collection do

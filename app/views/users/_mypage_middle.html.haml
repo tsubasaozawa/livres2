@@ -1,6 +1,9 @@
 .my-page__user-prof__detail
   .my-page__user-prof__detail__image
-    = image_tag "https://demo.a-blogcms.jp/media/001/201902/1c35033abff55e4664a216314d599201.png", class: "profile-image"
+    - if @user.profile_image.blank?
+      = image_tag "https://demo.a-blogcms.jp/media/001/201902/1c35033abff55e4664a216314d599201.png", class: "profile-image"
+    - else
+      = image_tag @user.profile_image.to_s, class: "profile-image"
   .my-page__user-prof__detail__text
     .my-page__user-prof__detail__text__box
       .my-page__user-prof__detail__text__box__users-info

@@ -1,0 +1,54 @@
+= render "shared/sub_header"
+- if flash[:notice]
+  .flash-message-notice
+    = flash[:notice]
+.user-edit-container
+  .user-edit-container__sidebar
+    = render "edit_sidebar"
+  .user-edit-container__edit-info
+    .user-edit-container__edit-info__title
+      %h2 基本情報
+    = form_with model: @user, local: true do |f|
+      .user-edit-container__edit-info__items
+        .user-edit-container__edit-info__items__item-left
+          .user-edit-container__edit-info__items__item-left__info
+            = f.label :profile_image, class: "user-edit-container__edit-info__items__item-left__info__label", title: "クリックして画像を変更" do
+              - if @user.profile_image.blank?
+                = image_tag "https://demo.a-blogcms.jp/media/001/201902/1c35033abff55e4664a216314d599201.png", class: "user-edit-container__edit-info__items__item-left__info__label__image", id: "img_prev", onClick:"$('#user_img').click()"
+              - else
+                = image_tag @user.profile_image.to_s, class: "user-edit-container__edit-info__items__item-left__info__label__image", id: "img_prev", onClick:"$('#user_img').click()"
+              = f.file_field :profile_image, class: "user-edit-container__edit-info__items__item-left__info__label__file",id: "user_img"
+        .user-edit-container__edit-info__items__item
+          .user-edit-container__edit-info__items__item__box
+            .user-edit-container__edit-info__items__item__box__field
+              %span ニックネーム
+              = f.text_field :nickname, class: "input-box"
+            .user-edit-container__edit-info__items__item__box__field
+              %span 名前（漢字）
+              = f.text_field :fullname_kanji, class: "input-box"
+            .user-edit-container__edit-info__items__item__box__field
+              %span 名前（カナ）
+              = f.text_field :fullname_kana, class: "input-box"
+            .user-edit-container__edit-info__items__item__box__field
+              .user-edit-container__edit-info__items__item__box__field__birthday
+                %span 誕生日
+              != sprintf(f.date_select(:birthday, prefix:'birthday',  prompt:"--", use_month_numbers:true, with_css_classes: true, start_year:2019, end_year:1900, date_separator:'%s'),'年','月')+'日'
+            .user-edit-container__edit-info__items__item__box__field
+              %span 電話番号
+              = f.text_field :tel_number, class: "input-box"
+      .user-edit-container__edit-info__items
+        .user-edit-container__edit-info__input-area
+          %span 自己紹介
+          = f.text_area :profile_text, maxlength: 100 , id: "textarea", placeholder: 'コメント入力（100文字まで）'
+      -# .user-edit-container__edit-info__item
+      -#   = f.text_field :current_address_postal_code
+      -# .user-edit-container__edit-info__item
+      -#   = f.text_field :current_address_prefectures
+      -# .user-edit-container__edit-info__item
+      -#   = f.text_field :current_address_city
+      -# .user-edit-container__edit-info__item
+      -#   = f.text_field :current_address
+      -# .user-edit-container__edit-info__item
+      -#   = f.text_field :current_address_building
+      .user-edit-container__edit-info__items
+        = f.submit  class: "btn-default"

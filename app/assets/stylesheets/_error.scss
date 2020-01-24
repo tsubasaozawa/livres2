@@ -1,0 +1,16 @@
+.errors{
+  position: absolute;
+  color: tomato;
+}
+
+.flash-message-notice{
+  position: absolute;
+  height: 40px;
+  width: 100%;
+  background:rgba(0, 133, 241, 0.9);
+  text-align: center;
+  line-height: 40px;
+  color: #ffffff;
+  font-weight: bold;
+
+}

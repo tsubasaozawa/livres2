@@ -3,15 +3,23 @@
     = link_to root_path, class: "" do
       = image_tag "livres_small.png", class: "sub-header-logo"
   .sub_header__right-container
-    = link_to "", class: "text-decoration-none font-color-black" do
-      .sub_header__right-container__button
-        %span Search
-    = link_to new_product_path, class: "text-decoration-none font-color-black" do
-      .sub_header__right-container__button
-        %span New
-    = link_to user_path(current_user), class: "text-decoration-none font-color-black" do
-      .sub_header__right-container__button
-        %span My page
-    = link_to destroy_user_session_path(current_user), method: :delete, class: "text-decoration-none font-color-black" do
-      .sub_header__right-container__button
-        %span Log out
+    - if user_signed_in?
+      = link_to "", class: "text-decoration-none font-color-black" do
+        .sub_header__right-container__button
+          %span Search
+      = link_to new_product_path, class: "text-decoration-none font-color-black" do
+        .sub_header__right-container__button
+          %span New
+      = link_to user_path(current_user), class: "text-decoration-none font-color-black" do
+        .sub_header__right-container__button
+          %span My page
+      = link_to destroy_user_session_path(current_user), method: :delete, class: "text-decoration-none font-color-black" do
+        .sub_header__right-container__button
+          %span Log out
+    - else
+      = link_to new_user_registration_path, class: "text-decoration-none font-color-black" do
+        .sub_header__right-container__button
+          %span 新規登録
+      = link_to new_user_session_path, class: "text-decoration-none font-color-black" do
+        .sub_header__right-container__button
+          %span ログイン

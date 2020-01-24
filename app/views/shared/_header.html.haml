@@ -1,12 +1,20 @@
 .header
   .header__upper-box
     .header__upper-box__session-menu
-      = link_to user_path(current_user), class: "header__upper-box__session-menu__link" do
-        .header__upper-box__session-menu__link__button
-          %span My page
-      = link_to destroy_user_session_path(current_user), method: :delete, class: "header__upper-box__session-menu__link" do
-        .header__upper-box__session-menu__link__button
-          %span Log out
+      - if user_signed_in?
+        = link_to user_path(current_user), class: "header__upper-box__session-menu__link" do
+          .header__upper-box__session-menu__link__button
+            %span My page
+        = link_to destroy_user_session_path(current_user), method: :delete, class: "header__upper-box__session-menu__link" do
+          .header__upper-box__session-menu__link__button
+            %span Log out
+      - else
+        = link_to new_user_registration_path, class: "header__upper-box__session-menu__link" do
+          .header__upper-box__session-menu__link__button
+            %span 新規登録
+        = link_to new_user_session_path, class: "header__upper-box__session-menu__link" do
+          .header__upper-box__session-menu__link__button
+            %span ログイン
   .header__top-image
     = link_to root_path, class: "" do
       %li= image_tag "livres_small.png", class: "top-image-url"
