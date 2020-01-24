@@ -1,0 +1,54 @@
+= render "shared/sub_header"
+.show-contents
+  .show-contents__product-info
+    .show-contents__product-info__title
+      【商品情報】
+    = link_to product_path(@product.id) do
+      = image_tag @product.images[0].image.to_s, class: "show-contents__product-info__image"
+    .show-contents__product-info__detail
+      %table
+        %tr
+          %th ＜詳細＞
+        %tr
+          %th Price：
+          %td ¥#{@product.price.to_s.gsub(/(\d)(?=\d{3}+$)/, '\\1,')}
+        %tr
+          %th Name：
+          %td= @product.saler.nickname
+      
+  .show-contents__message-box
+    .form-container
+      = form_with url: product_messages_path, id: "new-message", local: true do |f|
+        .message-form
+          .message-form__text-box
+            = f.text_area :message, maxlength: 1500 , class: 'chat-box__text', id: 'textarea', placeholder: 'コメント入力（1500文字まで）'
+          .message-form__submit-box
+            = f.submit '送信', class: 'chat-box__submit'
+
+    .message-views
+      - @messages.each do |message|
+        - if message.user.id == current_user.id
+          .message-views__detail-view{"data-message-id": "#{message.id}"}
+            .message-views__detail-view__message
+              .message-views__detail-view__message__text
+                = simple_format(message.message)
+              .message-views__detail-view__message__user-date
+                .message-views__detail-view__message__user-date__user
+                  = message.user.nickname
+                .message-views__detail-view__message__user-date__date
+                  = message.created_at.strftime("%Y/%m/%d")
+                .message-views__detail-view__message__user-date__date-time
+                  = message.created_at.strftime("%H:%M")
+                  
+        - else
+          .message-views__detail-view-right{"data-message-id": "#{message.id}"}
+            .message-views__detail-view-right__message
+              .message-views__detail-view-right__message__user-date
+                .message-views__detail-view-right__message__user-date__user
+                  = message.user.nickname
+                .message-views__detail-view-right__message__user-date__date
+                  = message.created_at.strftime("%Y/%m/%d")
+                .message-views__detail-view-right__message__user-date__date-time
+                  = message.created_at.strftime("%H:%M")
+              .message-views__detail-view-right__message__text
+                = simple_format(message.message)

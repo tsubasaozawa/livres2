@@ -12,6 +12,6 @@
         .my-page__user-prof__detail__text__box__users-status__posts-count
           投稿数：#{@user.products.count}件
         .my-page__user-prof__detail__text__box__users-status__liked-posts
-          -# お気に入り記事数：#{@product.count}件
+          お気に入り記事数：#{@user.liked_products.count}件
         .my-page__user-prof__detail__text__box__users-status__liked-users
-          -# お気に入りユーザー数：#{@like_user.count}件
+          お気に入りユーザー数：#{@liked_users.reject{|n| n == current_user.id}.count}件

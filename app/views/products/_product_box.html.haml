@@ -23,21 +23,26 @@
           -# %span.price-bar__shipping-fee
           -#   = @freight
 
-          - unless user_signed_in? && @product.buyer_id == current_user.id
-            - unless user_signed_in? && @product.saler_id == current_user.id
-              - if user_signed_in?
-                = link_to "購入画面に進む", purchase_path(@product.id) , class: 'status-bar__purchase'
-              - else
-                = link_to "購入画面に進む", new_user_session_path, class: 'status-bar__purchase'
+          - if user_signed_in?
+            - unless @product.buyer_id == current_user.id || @product.saler_id == current_user.id
+              = link_to "購入画面に進む", purchase_path(@product.id) , class: 'status-bar__purchase'
+            - if @product.buyer_id.blank?
+              - if @product.saler_id == current_user.id
+                .product-edit-box
+                  = link_to edit_product_path, class: 'text-decoration-none font-color-white' do
+                    .product-edit-box__edit-btn
+                      商品を編集する
+                  = link_to product_path, method: :delete , class: 'text-decoration-none font-color-white', "data-confirm" => "本当に削除しますか？?" do
+                    .product-edit-box__edit-btn
+                      この商品を削除する
 
-        - if user_signed_in? && @product.saler_id == current_user.id
-          .product-edit-box
-            = link_to edit_product_path, class: 'text-decoration-none font-color-white' do
-              .product-edit-box__edit-btn
-                商品を編集する
-            = link_to product_path, method: :delete , class: 'text-decoration-none font-color-white', "data-confirm" => "本当に削除しますか？?" do
-              .product-edit-box__edit-btn
-                この商品を削除する
+            - else
+              - if @product.buyer_id == current_user.id || @product.saler_id == current_user.id
+                = link_to product_message_path(@product.id), class: 'status-bar__message' do
+                  メッセージを送る
+
+          - else
+            = link_to "購入画面に進む", new_user_session_path, class: 'status-bar__purchase'
 
     .product-main-content
       .product-detail
