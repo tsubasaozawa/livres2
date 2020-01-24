@@ -71,7 +71,12 @@
           .sideways__-right-thick
             .sideways__right-thick__content
               .add-height{id: "like-btn-#{@product.id}"}
-                = render "likes/likes", product: @product
+                - if user_signed_in?
+                  = render "likes/likes", product: @product
+                - else
+                  #{@product.likes.count}人がいいね!しました
+                  = link_to new_user_session_path, class: "text-decoration-none font-color-black" do
+                    = fa_icon "heart-o"
 
         -# .sideways
         -#   .sideways__left-thick

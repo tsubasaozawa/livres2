@@ -157,8 +157,6 @@
     }
 
     .form-container{
-      // position: fixed;
-      // bottom: 0;
       width: 700px;
       margin-bottom: 20px;
 
@@ -175,7 +173,7 @@
           .chat-box__submit{
             margin-left: 10px;
             padding: 10px 15px;
-            border: solid 1px #eee;
+            border: solid 1px #ccc;
             border-radius: 5px;
             cursor: pointer;
             transition: 0.2s;
@@ -198,6 +196,7 @@
   max-height: 200px;
   width: 100%;
   padding: 10px 8px;
+  border: solid 1px #ccc;
   border-radius: 5px;
   line-height: 20px;
   outline: none;
