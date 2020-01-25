@@ -1,3 +1,140 @@
+.new-account{
+  width: 700px;
+  margin: 70px auto 0;
+  text-align: center;
+
+  &__title{}
+
+  &__container{
+    width: 500px;
+    margin: 0 auto;
+    text-align: left;
+
+    &__item{
+      display: flex;
+      margin-bottom: 15px;
+
+      &__limit{
+        display: flex;
+
+        &__card-select-box{
+          display: flex;
+          background: #fff;
+        
+          &__select-lists{
+            width: 70px;
+            height: 45px;
+            padding: 0 16px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            background: 0;
+            font-size: 16px;
+            line-height: 1.5;
+            cursor: pointer;
+            outline: 0;
+            -webkit-appearance: none;
+            min-height: 1.5em;
+            box-sizing: border-box;
+          }
+          &__expire-text{
+            margin: 0 10px 0 5px;
+            line-height: 45px;
+          }
+        }
+      }
+
+      #user_current_address_prefectures{
+        width: 33%;
+        position: relative;
+        z-index: 2;
+        height: 45px;
+        padding: 0 16px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        background: 0;
+        font-size: 14px;
+        line-height: 1.5;
+        cursor: pointer;
+        outline: 0;
+        -webkit-appearance: none;
+        min-height: 1.5em;
+        box-sizing: border-box;
+      }
+
+      &__label{
+        width: 35%;
+        margin-right: 15px;
+        line-height: 45px;
+        font-size: 14px;
+
+        span{
+          background: #ea352d;
+          margin: 0 0 0 8px;
+          padding: 2px 4px;
+          border-radius: 2px;
+          color: #fff;
+          font-size: 12px;
+          vertical-align: top;
+        }
+      }
+
+      &__input-text{
+        height: 45px;
+        width: 65%;
+        padding: 5px 10px;
+        border: solid 1px #ccc;
+        border-radius: 4px;
+        font-size: 14px;
+
+      }
+    }
+
+    &__submit{
+      text-align: center;
+      margin-top: 25px;
+
+
+    }
+
+    &__new-link{
+      margin-top: 20px;
+      text-align: center;
+    }
+  }
+}
+
+
+
+.btn{
+  padding: 10px 15px;
+  border: solid 1px #ccc;
+  border-radius: 5px;
+  font-size: 15px;
+  cursor: pointer;
+
+  &:hover{
+    background: #f7e436;
+    border: solid 1px #f7e436;
+  }
+}
+
+.login-btn{
+  width: 100%;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  font-size: 15px;
+  cursor: pointer;
+  background: #f7e436;
+
+  &:hover{
+    background: #f79336;
+    color: #f5f5f5;
+  }
+}
+
+
+
 .single-container{
   &__single-main{
     &__account-single-container{

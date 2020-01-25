@@ -1,3 +1,8 @@
-新規会員登録
-= link_to step1_signup_index_path(resource_name) , class: "" do
-  メールアドレスで登録する
+= render "devise/shared/session_header"
+.signup-page
+  .signup-page__title
+    %h2 新規会員登録
+  .signup-page__container
+    = link_to step1_signup_index_path(resource_name) , class: "text-decoration-none font-color-white" do
+      .signup-page__container__item
+        メールアドレスで登録する

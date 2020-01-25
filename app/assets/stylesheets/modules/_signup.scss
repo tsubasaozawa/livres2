@@ -1,0 +1,17 @@
+.signup-page{
+  width: 700px;
+  margin: 70px auto 0;
+  text-align: center;
+
+  &__title{}
+  &__container{
+    &__item{
+      width: 250px;
+      margin: 0 auto;
+      padding: 10px;
+      border: solid 1px #ccc;
+      border-radius: 5px;
+      background: rgba(rgb(212, 63, 57), 1.0);
+    }
+  }
+}

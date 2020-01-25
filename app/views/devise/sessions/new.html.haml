@@ -1,0 +1,17 @@
+= render "devise/shared/session_header"
+.new-account
+  .new-account__title
+    %h2 ログイン情報入力
+  .new-account__container
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      .new-account__container__item
+        = f.label :email, class: "new-account__container__item__label"
+        = f.email_field :email, autofocus: true, autocomplete: "email", class: "new-account__container__item__input-text"
+      .new-account__container__item
+        = f.label :password, class: "new-account__container__item__label"
+        = f.password_field :password, autocomplete: "current-password", class: "new-account__container__item__input-text"
+      .new-account__container__submit
+        = f.submit "ログイン", class: "login-btn"
+    .new-account__container__new-link
+      会員登録がまだの方はこちら
+      = render "devise/shared/links"
