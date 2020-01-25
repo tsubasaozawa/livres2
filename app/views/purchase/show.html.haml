@@ -1,14 +1,21 @@
 .new-conteiner
   = render 'shared/sub_header'
+  .p-title 購入内容の確認
   .purchase-conteiner
-    .purchase-conteiner__box
+    .purchase-conteiner__image
+      .product-image
+        .product-image__main
+          - @image.each_with_index do |i, index|
+            = image_tag(i.image.url, id: "product_image", class: "image-top imagemain#{index}")
+        .product-image__sub
+          - @image.each_with_index do |i, index|
+            = image_tag(i.image.url, id: "product_image", class: "image-subtop imagesub#{index}")
 
-      .p-title 購入内容の確認
+    .purchase-conteiner__box
       .purchase-conteiner__box__main
         .purchase-conteiner__box__main__conteiner
           .purchase-conteiner__box__main__conteiner--cover
             .purchase-conteiner__box__main__conteiner__top
-              = image_tag(@image[0].image.url, id: "product_image", class: "p-image-top")
               .p-text
                 = @product.title
             .purchase-conteiner__box__main__conteiner__price
@@ -16,8 +23,7 @@
                 = "¥#{@product.price.to_s.gsub(/(\d)(?=\d{3}+$)/, '\\1,')} "
                 -# .p-freight
                 -#   = @freight
-            .purchase-conteiner__box__main__conteiner__points
-              ポイントはありません
+
             .purchase-conteiner__box__main__conteiner__total-price 
               .purchase-conteiner__box__main__conteiner__total-price__title 支払い金額
               .purchase-conteiner__box__main__conteiner__total-price__price

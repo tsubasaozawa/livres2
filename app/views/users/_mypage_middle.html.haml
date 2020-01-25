@@ -9,8 +9,9 @@
       .my-page__user-prof__detail__text__box__users-info
         ユーザー名：
         = user.nickname
-        = link_to edit_user_path(current_user) , class: "users-info-edit"do
+        = link_to edit_user_path(current_user) , class: "users-info-edit" do
           = fa_icon "cogs", class: "user-cogs"
+        
       .my-page__user-prof__detail__text__box__users-status
         .my-page__user-prof__detail__text__box__users-status__posts-count
           投稿数：#{@user.saling_products.count}件
@@ -18,3 +19,5 @@
           お気に入り記事数：#{@user.liked_products.count}件
         .my-page__user-prof__detail__text__box__users-status__liked-users
           お気に入りユーザー数：#{@liked_users.reject{|n| n == current_user.id}.count}件
+      .my-page__user-prof__detail__text__box__profile-text
+        = user.profile_text

@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_user, except: [:edit]
   before_action :like_users, only: [:show, :bought_products, :sold_products]
+  
 
   def show
     @saling_products = User.find(params[:id]).saling_products

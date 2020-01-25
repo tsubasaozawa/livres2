@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: "products#index"
   resources :products do
     resources :likes, only: [:create, :destroy]
-    resources :messages, only: [:show, :create, :destroy]
+    resources :messages, only: [:index, :create, :destroy]
     collection do
       get 'get_category_children', defaults: { format: 'json' }
       get 'get_category_grandchildren', defaults: { format: 'json' }

@@ -1,7 +1,4 @@
 = render "shared/sub_header"
-- if flash[:notice]
-  .flash-message-notice
-    = flash[:notice]
 .user-edit-container
   .user-edit-container__sidebar
     = render "edit_sidebar"
@@ -40,15 +37,5 @@
         .user-edit-container__edit-info__input-area
           %span 自己紹介
           = f.text_area :profile_text, maxlength: 100 , id: "textarea", placeholder: 'コメント入力（100文字まで）'
-      -# .user-edit-container__edit-info__item
-      -#   = f.text_field :current_address_postal_code
-      -# .user-edit-container__edit-info__item
-      -#   = f.text_field :current_address_prefectures
-      -# .user-edit-container__edit-info__item
-      -#   = f.text_field :current_address_city
-      -# .user-edit-container__edit-info__item
-      -#   = f.text_field :current_address
-      -# .user-edit-container__edit-info__item
-      -#   = f.text_field :current_address_building
       .user-edit-container__edit-info__items
         = f.submit  class: "btn-default"

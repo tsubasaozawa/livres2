@@ -1,15 +1,13 @@
 = form_for product do |f|
   .exhibit-wrapper
-    .exhibit-wrapper__header
-      .exhibit-wrapper__header__logo
     .exhibit-wrapper__main
       .exhibit-wrapper__main__header
         %h3 商品の情報を入力
       .exhibit-wrapper__main__image
-        %h3 
+        %label
           出品画像
           %span 必須
-        %p 最大10枚までアップロードできます
+          ※最大10枚までアップロードできます
         .exhibit-wrapper__main__image__cards{data:{exhibitid:0}}
           %label.exhibit-wrapper__main__image__drag-wrapper
             .exhibit-wrapper__main__image__drag
@@ -26,7 +24,7 @@
           %label 
             商品名
             %span 必須
-          =f.text_field :title, class: "exhibit-wrapper__main__item__name__field", placeholder: "商品名（必須40文字まで）"
+          =f.text_area :title, maxlength: 150, class: "exhibit-wrapper__main__item__name__field", placeholder: "商品名（必須150文字まで）"
           .error-append__title
         .exhibit-wrapper__main__item__content
           %label 
@@ -35,12 +33,12 @@
           =f.text_area :text, rows:"6", class: "exhibit-wrapper__main__item__content__area" , placeholder: "商品の説明（必須1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
           .error-append__detail
       .category
-        .sub-head 商品の詳細
         .form__right
           .form-group
             .form-group__top
-              = f.label 'カテゴリー'
-              %span 必須
+              %label
+                カテゴリー
+                %span 必須
             .listing-product-detail__category
               .select-wrap
                 = f.select :categories, @category_parent_array, {}, {:name => 'product[categories][]', id: 'parent_category', class: 'select-default'}
@@ -76,16 +74,18 @@
       -#         .select-wrap
       -#           = d.select :day, [["1~2日で発送","1"],["2~3日で発送","2"],["4~7日で発送","3"]],{prompt: "---"}, {class: 'select-default'}
       .price
-        .sub-head 販売価格(300〜9,999,999)
+        .sub-head
         .form__right
           %ul.sell-price
             %li.form-group
               .form-group__top
                 .form-group__top__left
                   =f.label '価格'
-                  .form-require 必須
+                  %span 必須
                 .form-group__top__right
                   = f.number_field :price, placeholder: '例) 300', class: 'form-group__top__right__input',id: 'price_calc'
+                  .price-discription
+                    販売価格(300〜9,999,999)
             %li.calculation
               .calculation__left 販売手数料(10%)
               .calculation__right

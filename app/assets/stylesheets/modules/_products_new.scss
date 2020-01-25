@@ -13,7 +13,8 @@
 
 
 .bottom {
-  padding: 40px;
+  width: 100%;
+  padding: 0 0 40px;
   border-top: 1px solid #eee;
   .btn-red {
     margin: 40px 0 0;
@@ -77,15 +78,15 @@ $link-color: #78C1F0;
 @mixin must-span {
   color: white;
   background: red;
-  padding: 2px;
+  margin: 0 5px;
+  padding: 4px;
+  border-radius: 3px;
   font-weight: bold;
   font-size: 12px;
   vertical-align: 0.2em; 
 }
 @mixin exhibit-label {
-  padding: 5px;
   font-weight: bold;
-  padding: 10px 5px;
 }
 .exhibit-wrapper {
   box-sizing: border-box;
@@ -125,8 +126,8 @@ $link-color: #78C1F0;
       width: 100%;
       padding: 30px;
       border-bottom: 1px solid $border;
-      & h3 {
-          @include exhibit-label;
+      & label {
+        @include exhibit-label;
         & span {
           @include must-span;
         }
@@ -141,6 +142,8 @@ $link-color: #78C1F0;
         background: #f5f5f5;
         display: flex;
         flex-flow: row wrap;
+        margin-top: 7px;
+
         &__card {
           display: inline-block;
           box-sizing: border-box;
@@ -148,15 +151,17 @@ $link-color: #78C1F0;
           height: 160px;
           border: 1px solid black;
           position: relative;
+
           &__image {
           width: 100%;
           height: 50%;
           margin-top: 20px;
           background: gray;
-              & img {
-              width: 100%;
-              height: 100%;
-              }
+          
+            & img {
+            width: 100%;
+            height: 100%;
+            }
           }
           &__button {
             width: 100%;
@@ -176,8 +181,8 @@ $link-color: #78C1F0;
       }
       &__drag {
         box-sizing: border-box;
-        border: 2px dotted $border-form;
-        background: #f5f5f5;
+        border: 1px solid $border-form;
+        background: #eee;
         width: 100%;
         height:160px;
         display: flex;
@@ -196,14 +201,13 @@ $link-color: #78C1F0;
       box-sizing: border-box;
       width: 100%;
       height: 350px;
-      padding: 30px;
+      padding: 30px 30px 0 30px;
       display: flex;
       flex-direction: column;
       justify-content: space-around;
       &__name {
         display: inherit;
         flex-direction: column;
-        border-bottom: 1px solid $border;
         & label {
           @include exhibit-label;
           & span {
@@ -215,12 +219,14 @@ $link-color: #78C1F0;
           border: 1px solid $border-form;
           border-radius: 5px;
           width: 100%;
+          resize: none;
+          margin-top: 7px;
+          padding: 0 5px;
         }
       }
       &__content {
         display: flex;
         flex-direction: column;
-        border-bottom: 1px solid $border;
         & label {
           @include exhibit-label;
           & span {
@@ -230,8 +236,11 @@ $link-color: #78C1F0;
         &__area {
           line-height: 1.5;
           border: 1px solid $border-form;
-          border-radius: 5px; 
+          border-radius: 5px;
+          padding: 5px; 
           width: 100%;
+          resize: none;
+          margin-top: 10px;
         }
       }
     }
@@ -374,6 +383,44 @@ $link-color: #78C1F0;
       height: 80px;
     }
   }
+
+  .category {
+    width: 100%;
+    height: 100%;
+    padding: 30px;
+    
+    .form-group{
+  
+      &__top{
+        display: flex;
+  
+        & label {
+          @include exhibit-label;
+          & span {
+            @include must-span;
+          }
+        }
+      }
+  
+  
+      .select-wrap {
+        margin: 8px 0 0;
+  
+        .select-default {
+          width: 100%;
+          position: relative;
+          height: 48px;
+          padding: 0 16px;
+          border-radius: 4px;
+          border: 1px solid #ccc;
+          background: 0;
+          font-size: 16px;
+          line-height: 1.5;
+          cursor: pointer;
+        }
+      }
+    }
+  }
 }
 .exhibit-active {
   display: block;
@@ -382,7 +429,6 @@ $link-color: #78C1F0;
 .price {
   padding: 40px;
   border-top: 1px solid #eee;
-  height: 200px;
 
   .sub-head{
     float: left;
@@ -395,6 +441,7 @@ $link-color: #78C1F0;
     margin-left: 215px;
 
     .sell-price{
+      list-style: none;
       .sell-price li:first-child {
         padding: 0 0 24px;
         border: 0;
@@ -404,16 +451,9 @@ $link-color: #78C1F0;
         width: 50%;
       }
 
-      .form-group{
-        width: 100%;
-        margin: 40px 0 0;
-        font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
-        line-height: 1.5;
-        color: #333;
-
         .form-group{
           width: 100%;
-          margin: 40px 0 0;
+          margin: 10px 0 0;
           font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
           line-height: 1.5;
           color: #333;
@@ -421,6 +461,7 @@ $link-color: #78C1F0;
           &__top {
             display: flex;
             height: 44px;
+            margin: 30px 0;
           }
 
           label {
@@ -430,24 +471,22 @@ $link-color: #78C1F0;
 
           .form-group__top__left{
             display: flex;
-            width: 50%;
+            width: 40%;
             padding: 10px 0;
             text-align: center;
 
-            .form-require{
-              background-color: #ea352d;
+            span{
+              background: red;
               margin: 0 0 0 8px;
-              padding: 2px 4px;
+              padding: 4px;
               border-radius: 2px;
               color: #fff;
               font-size: 12px;
-              vertical-align: top;
-              height: 19px;
-              text-align: center;
+              font-weight: bold;
             }
           }
           .form-group__top__right{
-            width: 50%;
+            width: 60%;
             text-align: right;
             float: right;
 
@@ -461,18 +500,27 @@ $link-color: #78C1F0;
               margin: 0;
               text-align: right;
             }
+
+            .price-discription{
+              margin: 5px 0 0 20px;
+              float: left;
+              color: #888;
+              font-size: 14px;
+            }
           }
         }
-      }
+    
       .calculation {
         padding: 24px 0;
         border-top: 1px solid #ccc;
+        margin: 10px 0;
+        
         &__left {
           float: left;
           margin: 0;
           font-size: 14px;
           text-align: center;
-          line-height: 5px;
+          line-height: 10px;
         }
         &__right {
           float: right;
@@ -482,6 +530,7 @@ $link-color: #78C1F0;
       .result {
         padding: 24px 0;
         border-top: 1px solid #ccc;
+        
         &__left {
           font-weight: bold;
           font-size: 16px;
@@ -491,42 +540,6 @@ $link-color: #78C1F0;
           float: right;
           font-size: 34px;
         }
-      }
-    }
-  }
-}
-
-.category {
-  width: 100%;
-  height: 100%;
-  padding: 30px;
-
-
-  .form-group{
-
-    &__top{
-      display: flex;
-
-      span{
-        @include must-span;
-      }
-    }
-
-
-    .select-wrap {
-      margin: 8px 0 0;
-
-      .select-default {
-        width: 100%;
-        position: relative;
-        height: 48px;
-        padding: 0 16px;
-        border-radius: 4px;
-        border: 1px solid #ccc;
-        background: 0;
-        font-size: 16px;
-        line-height: 1.5;
-        cursor: pointer;
       }
     }
   }

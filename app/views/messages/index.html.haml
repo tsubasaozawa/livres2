@@ -18,7 +18,7 @@
       
   .show-contents__message-box
     .form-container
-      = form_with url: product_messages_path, id: "new-message", local: true do |f|
+      = form_with url: product_messages_path, id: "new-message" do |f|
         .message-form
           .message-form__text-box
             = f.text_area :message, maxlength: 1500 , class: 'chat-box__text', id: 'textarea', placeholder: 'コメント入力（1500文字まで）'

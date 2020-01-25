@@ -5,8 +5,9 @@
 
   &__sidebar{
     width: 150px;
-    margin: 20px 20px 0;
+    margin: 30px 25px 0 20px;
     font-size: 14px;
+    border-right: solid 1px #eee;
 
     &__item{
       padding: 5px 10px;
