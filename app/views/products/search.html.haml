@@ -1,8 +1,7 @@
-
 = render "shared/sub_header"
 .search-contents
   .search-contents__left-select-box
-    = form_with url: search_products_path , method: :get, local: true, class: "search-contents__left-select-box__form" do |f|
+    = form_with url: detail_search_products_path , method: :get, local: true, class: "search-contents__left-select-box__form" do |f|
       .search-contents__left-select-box__form__detail-search
         .search-contents__left-select-box__form__detail-search__box
           .search-contents__left-select-box__form__detail-search__box__main-title
@@ -29,9 +28,9 @@
           .search-contents__left-select-box__form__detail-search__box__middle-title
             価格
             .search-contents__left-select-box__form__detail-search__box__middle-title__select-lists
-            = f.text_field :price, placeholder: "¥ Min", class: "search-contents__left-select-box__form__detail-search__box__middle-title__input-helf-box"
+            = f.text_field :price_min, placeholder: "¥ Min", class: "search-contents__left-select-box__form__detail-search__box__middle-title__input-helf-box"
             〜
-            = f.text_field :price, placeholder: "¥ Max",class: "search-contents__left-select-box__form__detail-search__box__middle-title__input-helf-box"
+            = f.text_field :price_max, placeholder: "¥ Max",class: "search-contents__left-select-box__form__detail-search__box__middle-title__input-helf-box"
           .search-contents__left-select-box__form__detail-search__box__middle-check-box
           -#   商品の状態
           -#   .search-contents__left-select-box__form__detail-search__box__middle-check-box__check-boxes
@@ -69,22 +68,22 @@
           -#       = f.check_box :keyword, {multiple: true}
           -#       .check-box-title 送料込み(出品者負担)
 
-          .search-contents__left-select-box__form__detail-search__box__middle-check-box
-            販売状況
-            .search-contents__left-select-box__form__detail-search__box__middle-check-box__check-boxes
-              .search-contents__left-select-box__form__detail-search__box__middle-check-box__check-boxes__box
-                = f.check_box :keyword, {multiple: true}
-                .check-box-title すべて
-              .search-contents__left-select-box__form__detail-search__box__middle-check-box__check-boxes__box
-                = f.check_box :keyword, {multiple: true}
-                .check-box-title 販売中
-              .search-contents__left-select-box__form__detail-search__box__middle-check-box__check-boxes__box
-                = f.check_box :keyword, {multiple: true}
-                .check-box-title 売り切れ
+          -# .search-contents__left-select-box__form__detail-search__box__middle-check-box
+          -#   販売状況
+          -#   .search-contents__left-select-box__form__detail-search__box__middle-check-box__check-boxes
+          -#     .search-contents__left-select-box__form__detail-search__box__middle-check-box__check-boxes__box
+          -#       = f.check_box :keyword, {multiple: true}
+          -#       .check-box-title すべて
+          -#     .search-contents__left-select-box__form__detail-search__box__middle-check-box__check-boxes__box
+          -#       = f.check_box :keyword, {multiple: true}
+          -#       .check-box-title 販売中
+          -#     .search-contents__left-select-box__form__detail-search__box__middle-check-box__check-boxes__box
+          -#       = f.check_box :keyword, {multiple: true}
+          -#       .check-box-title 売り切れ
           .search-contents__left-select-box__form__detail-search__box__search-btn
             .search-contents__left-select-box__form__detail-search__box__search-btn__clear
               クリア
-            = f.submit "完了" ,class: "search-contents__left-select-box__form__detail-search__box__search-btn__search"
+            = f.submit "検索" ,class: "search-contents__left-select-box__form__detail-search__box__search-btn__search"
 
   .search-contents__search-results
     .search-contents__search-results__title

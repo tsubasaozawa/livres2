@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_product, only: [:update, :destroy, :show, :edit, :show] 
+  before_action :set_product, only: [:update, :destroy, :show, :edit] 
   before_action :load_mydata, only: [:my_product_show, :destroy, :show, :edit]
   before_action :set_like, only: [:index, :show, :search]
   
@@ -66,11 +66,174 @@ class ProductsController < ApplicationController
 
   def search
     @products = Product.where('title LIKE(?) OR text LIKE(?)', "%#{params[:keyword]}%","%#{params[:keyword]}%").order(created_at:"desc")
-
+    
     @category_parent_array = ["---"]
     Category.where(ancestry: nil).each do |parent|
       @category_parent_array << parent.name
     end
+  end
+
+  def detail_search
+    if params[:price_min].present? && params[:price_max].present?
+      search_products = Product.where('title LIKE(?) OR text LIKE(?)', "%#{params[:keyword]}%","%#{params[:keyword]}%").where('price >= ? AND price < ?',"#{params[:price_min]}","#{params[:price_max]}").order(created_at:"desc")
+
+      search_result = []
+      if params[:product][:categories][0] == false || params[:product][:categories][0] == "---"
+        @products = search_products
+      else
+        if params[:product][:categories][1] == false || params[:product][:categories][1] == "---"
+          search_products.each do |p|
+            if p.categories.include?(params[:product][:categories][0])
+              search_result << p
+              @products = search_result
+            else
+              @products = []
+            end
+          end
+        else
+          if params[:product][:categories][2] == false || params[:product][:categories][2] == "---"
+            search_products.each do |p|
+              if p.categories.include?(params[:product][:categories][1])
+                search_result << p
+                @products = search_result
+              else
+                @products = []
+              end
+            end
+          else
+            search_products.each do |p|
+              if p.categories.include?(params[:product][:categories][2])
+                search_result << p
+                @products = search_result
+              else
+                @products = []
+              end
+            end
+          end
+        end
+      end
+    elsif params[:price_min].present?
+      search_products = Product.where('title LIKE(?) OR text LIKE(?)', "%#{params[:keyword]}%","%#{params[:keyword]}%").where('price > ?',"#{params[:price_min]}").order(created_at:"desc")
+
+      search_result = []
+      if params[:product][:categories][0] == false || params[:product][:categories][0] == "---"
+        @products = search_products
+      else
+        if params[:product][:categories][1] == false || params[:product][:categories][1] == "---"
+          search_products.each do |p|
+            if p.categories.include?(params[:product][:categories][0])
+              search_result << p
+              @products = search_result
+            else
+              @products = []
+            end
+          end
+        else
+          if params[:product][:categories][2] == false || params[:product][:categories][2] == "---"
+            search_products.each do |p|
+              if p.categories.include?(params[:product][:categories][1])
+                search_result << p
+                @products = search_result
+              else
+                @products = []
+              end
+            end
+          else
+            search_products.each do |p|
+              if p.categories.include?(params[:product][:categories][2])
+                search_result << p
+                @products = search_result
+              else
+                @products = []
+              end
+            end
+          end
+        end
+      end
+    elsif params[:price_max].present?
+      search_products = Product.where('title LIKE(?) OR text LIKE(?)', "%#{params[:keyword]}%","%#{params[:keyword]}%").where('price < ?',"#{params[:price_max]}").order(created_at:"desc")
+
+      search_result = []
+      if params[:product][:categories][0] == false || params[:product][:categories][0] == "---"
+        @products = search_products
+      else
+        if params[:product][:categories][1] == false || params[:product][:categories][1] == "---"
+          search_products.each do |p|
+            if p.categories.include?(params[:product][:categories][0])
+              search_result << p
+              @products = search_result
+            else
+              @products = []
+            end
+          end
+        else
+          if params[:product][:categories][2] == false || params[:product][:categories][2] == "---"
+            search_products.each do |p|
+              if p.categories.include?(params[:product][:categories][1])
+                search_result << p
+                @products = search_result
+              else
+                @products = []
+              end
+            end
+          else
+            search_products.each do |p|
+              if p.categories.include?(params[:product][:categories][2])
+                search_result << p
+                @products = search_result
+              else
+                @products = []
+              end
+            end
+          end
+        end
+      end
+    else
+      search_products = Product.where('title LIKE(?) OR text LIKE(?)', "%#{params[:keyword]}%","%#{params[:keyword]}%").order(created_at:"desc")
+
+      search_result = []
+      if params[:product][:categories][0] == false || params[:product][:categories][0] == "---"
+        @products = search_products
+      else
+        if params[:product][:categories][1] == false || params[:product][:categories][1] == "---"
+          search_products.each do |p|
+            if p.categories.include?(params[:product][:categories][0])
+              search_result << p
+              @products = search_result
+            else
+              @products = []
+            end
+          end
+        else
+          if params[:product][:categories][2] == false || params[:product][:categories][2] == "---"
+            search_products.each do |p|
+              if p.categories.include?(params[:product][:categories][1])
+                search_result << p
+                @products = search_result
+              else
+                @products = []
+              end
+            end
+          else
+            search_products.each do |p|
+              if p.categories.include?(params[:product][:categories][2])
+                search_result << p
+                @products = search_result
+              else
+                @products = []
+              end
+            end
+          end
+        end
+      end
+    end
+    
+    @category_parent_array = ["---"]
+    Category.where(ancestry: nil).each do |parent|
+      @category_parent_array << parent.name
+    end
+
+    render search_products_path
   end
 
 

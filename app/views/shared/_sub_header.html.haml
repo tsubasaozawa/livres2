@@ -4,7 +4,7 @@
       = image_tag "livres_small.png", class: "sub-header-logo"
   .sub_header__right-container
     - if user_signed_in?
-      = link_to "", class: "text-decoration-none font-color-black" do
+      = link_to search_products_path, class: "text-decoration-none font-color-black" do
         .sub_header__right-container__button
           %span Search
       = link_to new_product_path, class: "text-decoration-none font-color-black" do
