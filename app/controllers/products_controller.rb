@@ -38,7 +38,6 @@ class ProductsController < ApplicationController
 
   def edit
     10.times {@product.images.build}
-    # @user = current_user
     @images = Image.where(product_id: @product)
     @category_parent_array = ["---"]
     Category.where(ancestry: nil).each do |parent|
