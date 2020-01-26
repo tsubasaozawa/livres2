@@ -22,8 +22,10 @@
   .header__bottom-box
     .header__bottom-box__top-menu
       .header__bottom-box__top-menu__button
-        = link_to "", class: "text-decoration-none font-color-black" do
-          %span Search
+        = form_with url: search_products_path, method: :get, local: true, class: "search-form" do |f|
+          = f.text_field :keyword, type: "text", placeholder: "フリーワード検索", class: "search-form__input-box"
+          %button.search-form__btn{type: "submit"}
+            = fa_icon "search"
       .header__bottom-box__top-menu__button
         = link_to new_product_path, class: "text-decoration-none font-color-black" do
           %span New
