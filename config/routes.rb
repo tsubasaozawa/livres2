@@ -7,12 +7,11 @@ Rails.application.routes.draw do
     collection do
       get 'get_category_children', defaults: { format: 'json' }
       get 'get_category_grandchildren', defaults: { format: 'json' }
+      get :search
     end
     member do
       get 'get_category_children', defaults: { format: 'json' }
       get 'get_category_grandchildren', defaults: { format: 'json' }
-    end
-    member do
       post 'image_destroy', defaults: { format: 'json' }
     end
   end
