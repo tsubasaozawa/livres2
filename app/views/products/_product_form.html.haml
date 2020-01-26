@@ -42,37 +42,6 @@
             .listing-product-detail__category
               .select-wrap
                 = f.select :categories, @category_parent_array, {}, {:name => 'product[categories][]', id: 'parent_category', class: 'select-default'}
-      -#     .form-group
-      -#       .form-group__top
-      -#         = f.label '商品の状態'
-      -#         .form-require 必須
-      -#       = f.fields_for :condition do |c|
-      -#         .select-wrap
-      -#           = c.select :condition, [["新品、未使用","1"],["未使用に近い","2"],["目立った傷や汚れなし","3"],["やや傷や汚れあり","4"],["傷や汚れあり","5"],["全体的に状態が悪い","6"]],{prompt: "---"}, { class: 'select-default'}
-      -# .delivery
-      -#   .sub-head 配送について
-      -#   .form__right
-      -#     .form-group
-      -#       .form-group__top
-      -#         = f.label '配送料の負担'
-      -#         .form-require 必須
-      -#       = f.fields_for :freight do |freight|
-      -#         .select-wrap
-      -#           = freight.select :freight, [["送料込み(出品者負担)","1"],["着払い(購入者負担)","2"]],{prompt: "---"}, {class: 'select-default'}
-      -#     .form-group
-      -#       .form-group__top
-      -#         =f.label '発送元の地域'
-      -#         .form-require 必須
-      -#       = f.fields_for :root_area do |r|
-      -#         .select-wrap
-      -#           = r.select :root_area, [["北海道","北海道"],["青森","青森"],["岩手","岩手"],["宮城","宮城"],["秋田","秋田"],["山形","山形"],["福島","福島"],["茨城","茨城"],["栃木","栃木"],["群馬","群馬"],["埼玉","埼玉"],["千葉","千葉"],["東京","東京"],["神奈川","神奈川"]], {prompt: "---"}, {class: 'select-default'}
-      -#     .form-group
-      -#       .form-group__top
-      -#         =f.label '発送までの日数'
-      -#         .form-require 必須
-      -#       = f.fields_for :day do |d|
-      -#         .select-wrap
-      -#           = d.select :day, [["1~2日で発送","1"],["2~3日で発送","2"],["4~7日で発送","3"]],{prompt: "---"}, {class: 'select-default'}
       .price
         .sub-head
         .form__right

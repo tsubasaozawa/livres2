@@ -14,7 +14,7 @@
         .product-introduce
           .product-introduce__title
             【概要】
-          = @product.text
+          = simple_format(@product.text)
 
         .price-bar  
           %span.price-bar__bold
@@ -52,22 +52,22 @@
           .sideways__-right-thick
             .sideways__right-thick__content
               .add-height
-                = link_to "#{@product.saler.nickname}", {}, class: 'username-mp-link'
+                = link_to user_path(@product.saler.id), class: 'font-color-black' do
+                  = @product.saler.nickname
         .sideways
           .sideways__left-thick
             .sideways__left-thick__title カテゴリー
           .sideways__-right-thick
             .sideways__right-thick__content 
               .sideways__right-thick__content--categories
-                %li
-                  = @product.categories[0]
-                %li.add-icon
-                  = @product.categories[1] 
-                %li.add-icon
-                  = @product.categories[2]
+                = @product.categories[0]
+                >
+                = @product.categories[1]
+                >
+                = @product.categories[2]
         .sideways
           .sideways__left-thick
-            .sideways__left-thick__title 出品者
+            .sideways__left-thick__title いいね!人数
           .sideways__-right-thick
             .sideways__right-thick__content
               .add-height{id: "like-btn-#{@product.id}"}
@@ -78,33 +78,5 @@
                   = link_to new_user_session_path, class: "text-decoration-none font-color-black" do
                     = fa_icon "heart-o"
 
-        -# .sideways
-        -#   .sideways__left-thick
-        -#     .sideways__left-thick__title 商品の状態
-        -#   .sideways__-right-thick
-        -#     .sideways__right-thick__content
-        -#       .add-height
-        -#         = @condition
-        -# .sideways
-        -#   .sideways__left-thick
-        -#     .sideways__left-thick__title 配送料の負担
-        -#   .sideways__-right-thick
-        -#     .sideways__right-thick__content
-        -#       .add-height
-        -#         = @freight
-        -# .sideways
-        -#   .sideways__left-thick
-        -#     .sideways__left-thick__title 配送元地域
-        -#   .sideways__-right-thick
-        -#     .sideways__right-thick__content
-        -#       .add-height
-        -#         = @root_area
-        -# .sideways
-        -#   .sideways__left-thick
-        -#     .sideways__left-thick__title 発送日の目安
-        -#   .sideways__-right-thick
-        -#     .sideways__right-thick__content
-        -#       .add-height
-        -#         = @day
 
         

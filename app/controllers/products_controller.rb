@@ -11,10 +11,6 @@ class ProductsController < ApplicationController
   def new
     @product = Product.new
     10.times {@product.images.build}
-    # @product.build_condition
-    # @product.build_freight
-    # @product.build_root_area
-    # @product.build_day
     @category_parent_array = ["---"]
     Category.where(ancestry: nil).each do |parent|
       @category_parent_array << parent.name
@@ -32,9 +28,6 @@ class ProductsController < ApplicationController
 
   def show
   end
-
-  # def my_product_show
-  # end
 
   def edit
     10.times {@product.images.build}
@@ -250,8 +243,6 @@ class ProductsController < ApplicationController
     @image.destroy
   end
 
-  # ------------------------------------------
-
   private
   def product_params
     params.require(:product).permit(
@@ -261,10 +252,6 @@ class ProductsController < ApplicationController
       :saler_id,
       {categories: []},
       images_attributes: [:id, :image],
-      # condition_attributes: [:condition],
-      # freight_attributes: [:freight],
-      # root_area_attributes: [:root_area],
-      # day_attributes: [:day]
     )
   end
 
@@ -278,39 +265,5 @@ class ProductsController < ApplicationController
 
   def load_mydata
     @image = Image.where(product_id: @product)
-    # @conditions = Condition.find_by product_id: @product
-    # case @conditions.condition
-    # when 1
-    #   @condition = "新品、未使用"
-    # when 2
-    #   @condition = "未使用に近い"
-    # when 3
-    #   @condition = "目立った傷や汚れなし"
-    # when 4
-    #   @condition = "やや傷や汚れあり"
-    # when 5
-    #   @condition = "傷や汚れあり"
-    # else
-    #   @condition = "全体的に状態が悪い"
-    # end
-
-    # @freights = Freight.find_by product_id: @product
-    # if @freights.freight == 1
-    #   @freight = "送料込み(出品者負担)"
-    # else
-    #   @freight = "着払い(購入者負担)"
-    # end
-
-    # @root_areas = RootArea.find_by product_id: @product
-    # @root_area = @root_areas.root_area
-
-    # @days = Day.find_by product_id: @product
-    # if @days.day == 1
-    #   @day = "1~2日で発送"
-    # elsif @days.day == 2
-    #   @day = "2~3日で発送"
-    # else
-    #   @day = "4~7日で発送"
-    # end
   end
 end

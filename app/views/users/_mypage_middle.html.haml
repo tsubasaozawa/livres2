@@ -9,8 +9,9 @@
       .my-page__user-prof__detail__text__box__users-info
         ユーザー名：
         = user.nickname
-        = link_to edit_user_path(current_user) , class: "users-info-edit" do
-          = fa_icon "cogs", class: "user-cogs"
+        - if current_user.id == @user.id
+          = link_to edit_user_path(current_user) , class: "users-info-edit" do
+            = fa_icon "cogs", class: "user-cogs"
         
       .my-page__user-prof__detail__text__box__users-status
         .my-page__user-prof__detail__text__box__users-status__posts-count

@@ -12,77 +12,18 @@
           .search-contents__left-select-box__form__detail-search__box__middle-title
             カテゴリーを選択する
             .search-contents__left-select-box__form__detail-search__box__middle-title__select-lists
-              -# = fa_icon "chevron-down", class: "search-contents__left-select-box__form__detail-search__box__middle-title__select-lists__icon"
-              -# = f.select :keyword, [["すべて",""]], class: "search-contents__left-select-box__form__detail-search__box__middle-title__select-lists__select-box"
               .listing-product-detail__category
                 .select-wrap
                   = f.select :categories, @category_parent_array, {}, {:name => 'product[categories][]', id: 'parent_category', class: 'select-default'}
-          -# .search-contents__left-select-box__form__detail-search__box__middle-title
-          -#   ブランド名から探す
-          -#   = f.text_field :keyword, placeholder: "例）シャネル", class: "search-contents__left-select-box__form__detail-search__box__middle-title__input-box"
-          -# .search-contents__left-select-box__form__detail-search__box__middle-title
-          -#   サイズを指定する
-          -#   .search-contents__left-select-box__form__detail-search__box__middle-title__select-lists
-          -#     = fa_icon "chevron-down", class: "search-contents__left-select-box__form__detail-search__box__middle-title__select-lists__icon"
-          -#     = f.select :keyword, [["すべて",""]], class: "search-contents__left-select-box__form__detail-search__box__middle-title__select-lists__select-box"
           .search-contents__left-select-box__form__detail-search__box__middle-title
             価格
             .search-contents__left-select-box__form__detail-search__box__middle-title__select-lists
             = f.text_field :price_min, placeholder: "¥ Min", class: "search-contents__left-select-box__form__detail-search__box__middle-title__input-helf-box"
             〜
             = f.text_field :price_max, placeholder: "¥ Max",class: "search-contents__left-select-box__form__detail-search__box__middle-title__input-helf-box"
-          .search-contents__left-select-box__form__detail-search__box__middle-check-box
-          -#   商品の状態
-          -#   .search-contents__left-select-box__form__detail-search__box__middle-check-box__check-boxes
-          -#     .search-contents__left-select-box__form__detail-search__box__middle-check-box__check-boxes__box
-          -#       = f.check_box :keyword, {multiple: true}
-          -#       .check-box-title すべて
-          -#     .search-contents__left-select-box__form__detail-search__box__middle-check-box__check-boxes__box
-          -#       = f.check_box :keyword, {multiple: true}
-          -#       .check-box-title 新品、未使用
-          -#     .search-contents__left-select-box__form__detail-search__box__middle-check-box__check-boxes__box
-          -#       = f.check_box :keyword, {multiple: true}
-          -#       .check-box-title 未使用に近い
-          -#     .search-contents__left-select-box__form__detail-search__box__middle-check-box__check-boxes__box
-          -#       = f.check_box :keyword, {multiple: true}
-          -#       .check-box-title 目立った傷や汚れなし
-          -#     .search-contents__left-select-box__form__detail-search__box__middle-check-box__check-boxes__box
-          -#       = f.check_box :keyword, {multiple: true}
-          -#       .check-box-title やや傷や汚れあり
-          -#     .search-contents__left-select-box__form__detail-search__box__middle-check-box__check-boxes__box
-          -#       = f.check_box :keyword, {multiple: true}
-          -#       .check-box-title 傷や汚れあり
-          -#     .search-contents__left-select-box__form__detail-search__box__middle-check-box__check-boxes__box
-          -#       = f.check_box :keyword, {multiple: true}
-          -#       .check-box-title 全体的に状態が悪い
-          -# .search-contents__left-select-box__form__detail-search__box__middle-check-box
-          -#   配送料の負担
-          -#   .search-contents__left-select-box__form__detail-search__box__middle-check-box__check-boxes
-          -#     .search-contents__left-select-box__form__detail-search__box__middle-check-box__check-boxes__box
-          -#       = f.check_box :keyword, {multiple: true}
-          -#       .check-box-title すべて
-          -#     .search-contents__left-select-box__form__detail-search__box__middle-check-box__check-boxes__box
-          -#       = f.check_box :keyword, {multiple: true}
-          -#       .check-box-title 着払い(購入者負担)
-          -#     .search-contents__left-select-box__form__detail-search__box__middle-check-box__check-boxes__box
-          -#       = f.check_box :keyword, {multiple: true}
-          -#       .check-box-title 送料込み(出品者負担)
-
-          -# .search-contents__left-select-box__form__detail-search__box__middle-check-box
-          -#   販売状況
-          -#   .search-contents__left-select-box__form__detail-search__box__middle-check-box__check-boxes
-          -#     .search-contents__left-select-box__form__detail-search__box__middle-check-box__check-boxes__box
-          -#       = f.check_box :keyword, {multiple: true}
-          -#       .check-box-title すべて
-          -#     .search-contents__left-select-box__form__detail-search__box__middle-check-box__check-boxes__box
-          -#       = f.check_box :keyword, {multiple: true}
-          -#       .check-box-title 販売中
-          -#     .search-contents__left-select-box__form__detail-search__box__middle-check-box__check-boxes__box
-          -#       = f.check_box :keyword, {multiple: true}
-          -#       .check-box-title 売り切れ
           .search-contents__left-select-box__form__detail-search__box__search-btn
-            .search-contents__left-select-box__form__detail-search__box__search-btn__clear
-              クリア
+            -# .search-contents__left-select-box__form__detail-search__box__search-btn__clear
+            -#   クリア
             = f.submit "検索" ,class: "search-contents__left-select-box__form__detail-search__box__search-btn__search"
 
   .search-contents__search-results
