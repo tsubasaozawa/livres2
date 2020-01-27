@@ -215,13 +215,13 @@ $link-color: #78C1F0;
           }
         }
         &__field {
-          line-height: 2.5; 
+          line-height: 1.5; 
           border: 1px solid $border-form;
           border-radius: 5px;
           width: 100%;
           resize: none;
           margin-top: 7px;
-          padding: 0 5px;
+          padding: 5px;
         }
       }
       &__content {
