@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show, :search, :detail_search, :get_category_children, :get_category_grandchildren]
   before_action :set_product, only: [:update, :destroy, :show, :edit] 
   before_action :load_mydata, only: [:my_product_show, :destroy, :show, :edit]
   before_action :set_like, only: [:index, :show, :search]
