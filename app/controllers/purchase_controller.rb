@@ -7,12 +7,6 @@ class PurchaseController < ApplicationController
       redirect_to controller: "cards", action: "new"
     else
       @image = Image.where(product_id: @product)
-    #   @freights = Freight.find_by product_id: @product
-    # if @freights.freight == 1
-    #   @freight = "送料込み(出品者負担)"
-    # else
-    #   @freight = "着払い(購入者負担)"
-    # end
       Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
       customer = Payjp::Customer.retrieve(card.customer_id)
       @default_card_information = customer.cards.retrieve(card.card_id)
@@ -32,12 +26,6 @@ class PurchaseController < ApplicationController
 
   def done
     @image = Image.where(product_id: @product)
-    # @freights = Freight.find_by product_id: @product
-    # if @freights.freight == 1
-    #   @freight = "送料込み(出品者負担)"
-    # else
-    #   @freight = "着払い(購入者負担)"
-    # end
   end
 
   def update

@@ -6,10 +6,6 @@ class SignupController < ApplicationController
   def step1
     @user = User.new
     @user.build_cards
-    # if session["devise.provider_data"] != nil
-    #   @snsusername = session["devise.provider_data"]["info"]["name"]
-    #   @snsuseremail = session["devise.provider_data"]["info"]["email"]
-    # end
   end
 
   def save_step1_to_session
@@ -36,10 +32,6 @@ class SignupController < ApplicationController
 
   def create
     @user = User.new(session[:user_params_after_step2])
-    # if session["devise.provider_data"] != nil
-    #   @user.uid = session["devise.provider_data"]["uid"]
-    #   @user.provider = session["devise.provider_data"]["provider"]
-    # end
 
     Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
     if params['payjp-token'].blank?
